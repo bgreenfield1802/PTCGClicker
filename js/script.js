@@ -534,6 +534,101 @@ const cards = {
                 get name() {return "Sinistea"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
                 price: 0.10, num: 89, rarity: 1, type: "psychic", holo: 0, revPrice: 0.24,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card36: {
+                get name() {return "Diglett"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.03, num: 92, rarity: 1, type: "fighting", holo: 0, revPrice: 0.19,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card37: {
+                get name() {return "Rhyhorn"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.05, num: 96, rarity: 1, type: "fighting", holo: 0, revPrice: 0.19,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card38: {
+                get name() {return "Rhyhorn"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.05, num: 97, rarity: 1, type: "fighting", holo: 0, revPrice: 0.24,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card39: {
+                get name() {return "Baltoy"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.04, num: 101, rarity: 1, type: "fighting", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card40: {
+                get name() {return "Baltoy"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.06, num: 102, rarity: 1, type: "fighting", holo: 0, revPrice: 0.16,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card41: {
+                get name() {return "Mudbray"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.05, num: 105, rarity: 1, type: "fighting", holo: 0, revPrice: 0.20,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card42: {
+                get name() {return "Silicobra"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.05, num: 107, rarity: 1, type: "fighting", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card43: {
+                get name() {return "Silicobra"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.05, num: 108, rarity: 1, type: "fighting", holo: 0, revPrice: 0.19,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card44: {
+                get name() {return "Clobbopus"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.04, num: 111, rarity: 1, type: "fighting", holo: 0, revPrice: 0.15,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card45: {
+                get name() {return "Clobbopus"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.04, num: 112, rarity: 1, type: "fighting", holo: 0, revPrice: 0.18,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card46: {
+                get name() {return "Galarian Zigzagoon"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.19, num: 117, rarity: 1, type: "dark", holo: 0, revPrice: 0.31,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card47: {
+                get name() {return "Skorupi"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.09, num: 121, rarity: 1, type: "dark", holo: 0, revPrice: 0.16,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card48: {
+                get name() {return "Croagunk"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.13, num: 123, rarity: 1, type: "dark", holo: 0, revPrice: 0.30,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card49: {
+                get name() {return "Nickit"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.05, num: 125, rarity: 1, type: "dark", holo: 0, revPrice: 0.20,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card50: {
+                get name() {return "Galarian Meowth"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.04, num: 127, rarity: 1, type: "metal", holo: 0, revPrice: 0.20,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card51: {
+                get name() {return "Mawile"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.08, num: 129, rarity: 1, type: "metal", holo: 0, revPrice: 0.20,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card52: {
+                get name() {return "Ferroseed"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.06, num: 130, rarity: 1, type: "metal", holo: 0, revPrice: 0.17,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card53: {
+                get name() {return "Pawniard"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.03, num: 133, rarity: 1, type: "metal", holo: 0, revPrice: 0.16,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card54: {
+                get name() {return "Cufant"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.04, num: 136, rarity: 1, type: "metal", holo: 0, revPrice: 0.21,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
             }
         },
         // ======================== UNCOMMON ======================== //
@@ -618,6 +713,51 @@ const cards = {
             card16: {
                 get name() {return "Haunter"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
                 price: 0.15, num: 84, rarity: 2, type: "psychic", holo: 0, revPrice: 0.44,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card17: {
+                get name() {return "Dugtrio"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.05, num: 93, rarity: 2, type: "fighting", holo: 0, revPrice: 0.31,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card18: {
+                get name() {return "Hitmonlee"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.13, num: 94, rarity: 2, type: "fighting", holo: 0, revPrice: 0.50,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card19: {
+                get name() {return "Hitmonchan"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.12, num: 95, rarity: 2, type: "fighting", holo: 0, revPrice: 0.46,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card20: {
+                get name() {return "Rhydon"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.14, num: 98, rarity: 2, type: "fighting", holo: 0, revPrice: 0.42,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card21: {
+                get name() {return "Sudowoodo"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.12, num: 100, rarity: 2, type: "fighting", holo: 0, revPrice: 0.43,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card22: {
+                get name() {return "Galarian Linoone"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.12, num: 118, rarity: 2, type: "dark", holo: 0, revPrice: 0.51,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card23: {
+                get name() {return "Ferrothorn"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.05, num: 131, rarity: 2, type: "metal", holo: 0, revPrice: 0.29,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card24: {
+                get name() {return "Galarian Stunfisk"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.07, num: 132, rarity: 2, type: "metal", holo: 0, revPrice: 0.38,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card25: {
+                get name() {return "Bisharp"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.05, num: 134, rarity: 2, type: "metal", holo: 0, revPrice: 0.30,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
             }
         },
@@ -723,6 +863,46 @@ const cards = {
                 get name() {return "Polteageist"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
                 price: 0.18, num: 90, rarity: 3, type: "psychic", holo: 0, revPrice: 0.37,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card21: {
+                get name() {return "Claydol"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.18, num: 103, rarity: 3, type: "fighting", holo: 0, revPrice: 0.40,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card22: {
+                get name() {return "Mudsdale"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.17, num: 106, rarity: 3, type: "fighting", holo: 0, revPrice: 0.40,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card23: {
+                get name() {return "Sandaconda"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.21, num: 109, rarity: 3, type: "fighting", holo: 0, revPrice: 0.35,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card24: {
+                get name() {return "Grapploct"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.22, num: 113, rarity: 3, type: "fighting", holo: 0, revPrice: 0.43,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card25: {
+                get name() {return "Stonjourner"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.18, num: 114, rarity: 3, type: "fighting", holo: 0, revPrice: 0.34,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card26: {
+                get name() {return "Drapion"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.19, num: 122, rarity: 3, type: "dark", holo: 0, revPrice: 0.31,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card27: {
+                get name() {return "Thievul"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.20, num: 126, rarity: 3, type: "dark", holo: 0, revPrice: 0.38,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card28: {
+                get name() {return "Corviknight"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.20, num: 135, rarity: 3, type: "metal", holo: 0, revPrice: 0.50,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
             }
         },
         // ======================== HOLO RARE ======================== //
@@ -765,6 +945,36 @@ const cards = {
             card8: {
                 get name() {return "Gengar"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
                 price: 0.92, num: 85, rarity: 4, type: "psychic", holo: 3, revPrice: 0.95,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card9: {
+                get name() {return "Rhyperior"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.39, num: 99, rarity: 4, type: "fighting", holo: 3, revPrice: 0.32,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card10: {
+                get name() {return "Sandaconda"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.26, num: 110, rarity: 4, type: "fighting", holo: 3, revPrice: 0.31,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card11: {
+                get name() {return "Galarian Obstagoon"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.37, num: 119, rarity: 4, type: "dark", holo: 3, revPrice: 0.45,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card12: {
+                get name() {return "Toxicroak"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.69, num: 124, rarity: 4, type: "dark", holo: 3, revPrice: 0.73,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card13: {
+                get name() {return "Galarian Perrserker"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.40, num: 128, rarity: 4, type: "metal", holo: 3, revPrice: 0.50,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card14: {
+                get name() {return "Copperajah"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 0.37, num: 137, rarity: 4, type: "metal", holo: 3, revPrice: 0.43,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
             }
         },
@@ -828,6 +1038,36 @@ const cards = {
             card12: {
                 get name() {return "Indeedee V"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
                 price: 1.03, num: 91, rarity: 5, type: "psychic", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card13: {
+                get name() {return "Regirock V"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 1.02, num: 104, rarity: 5, type: "fighting", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card14: {
+                get name() {return "Stonjourner V"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 1.14, num: 115, rarity: 5, type: "fighting", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card15: {
+                get name() {return "Stonjourner VMAX"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 2.58, num: 116, rarity: 5, type: "fighting", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card16: {
+                get name() {return "Sableye V"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 2.37, num: 120, rarity: 5, type: "dark", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card17: {
+                get name() {return "Zacian V"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 2.38, num: 138, rarity: 5, type: "metal", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
+            },
+            card18: {
+                get name() {return "Zamazenta V"+holoCheck(this.holo)+" | "+packs.swsh1.name2+" "+zeroFill(this.num)+"/202"},
+                price: 2.58, num: 139, rarity: 5, type: "metal", holo: 1,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
             }
         },
