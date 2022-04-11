@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PTCGClicker</title>
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="navbar">
+    <ul>
+        <li>
+            <a href="#">
+                <div class="headerLogo"></div>
+            </a>
+        </li>
+    </ul>
+    <div class="settings"></div>
+</div>
+<div class="settingsMenu">
+    <li>
+        <h2>SETTINGS</h2>
+    </li>
+    <li>
+        <input type="checkbox" id="popupCheckbox">
+        <span>Disable Popups</span>
+    </li>
+    <li>
+        <input type="checkbox" id="clickCheckbox">
+        <span>Sell on Click</span>
+    </li>
+    <div class="clearGameState">Clear Game Save</div>
+    <div class="saveGame">Save</div>
+</div>
+<div class="content">
+    <!--    OPEN PACK MODAL    -->
+
+    <!--    END MODAL    -->
+    <div class="left">
+        <div class="unboxing">
+            <div class="backgroundImage"></div>
+            <div class="packDisplay" id="pack" onclick="">
+                <img src="" id="packDisplayImage">
+                <div class="packInfoContainer">
+                    <div class="packName" id="packName"></div>
+                    <div class="packPrice" id="packPrice"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="saveIndicator">Saved</div>
+    <div class="right">
+        <div class="info">
+            <div class="infoLeft">
+                <p class="infoNum" id="inv"></p>
+            </div>
+            <div class="infoRight">
+                <p class="infoNum" id="wallet"></p>
+            </div>
+        </div>
+        <div class="tabContainer">
+            <ul class="tabs">
+                <li data-tab-target="#inventory" class="active tab">Inventory</li>
+                <li data-tab-target="#packs" class="tab">Packs</li>
+                <li data-tab-target="#shop" class="tab">Shop</li>
+                <li data-tab-target="#collection" class="tab">Collection</li>
+                <li data-tab-target="#stats" class="tab statTab">Stats</li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div id="inventory" data-tab-content class="active">
+                <div class="inventory">
+                    <div class="inventoryInfo">
+                        <span id="value"></span>
+                    </div>
+                    <div class="inventoryItems"></div>
+                </div>
+            </div>
+            <div id="packs" data-tab-content>
+                <div class="packOptions">
+                    <div class="optionContainer">
+                        <div id="swshPromoOpt"></div>
+                        <div class="option" id="swsh1Opt" onclick="selectPack('swsh1')">
+                            <div class="optionBackground" id="swsh1"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh2Opt" onclick="selectPack('swsh2')">
+                            <div class="optionBackground" id="swsh2"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh3Opt" onclick="selectPack('swsh3')">
+                            <div class="optionBackground" id="swsh3"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh4Opt" onclick="selectPack('swsh4')">
+                            <div class="optionBackground" id="swsh4"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh5Opt" onclick="selectPack('swsh5')">
+                            <div class="optionBackground" id="swsh5"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="mcd1Opt" onclick="selectPack('mcd1')">
+                            <div class="optionBackground" id="mcd1"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh6Opt" onclick="selectPack('swsh6')">
+                            <div class="optionBackground" id="swsh6"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh7Opt" onclick="selectPack('swsh7')">
+                            <div class="optionBackground" id="swsh7"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh8Opt" onclick="selectPack('swsh8')">
+                            <div class="optionBackground" id="swsh8"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh9Opt" onclick="selectPack('swsh9')">
+                            <div class="optionBackground" id="swsh9"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="cele1Opt" onclick="selectPack('cele1')">
+                            <div class="optionBackground" id="cele1"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh10Opt" onclick="selectPack('swsh10')">
+                            <div class="optionBackground" id="swsh10"></div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" id="swsh11Opt" onclick="selectPack('swsh11')">
+                            <div class="optionBackground" id="swsh11"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="shop" data-tab-content>
+                <div class="shopContainer">
+                    <div class="optionContainer">
+                        <div class="option" onclick="upgradeInventory()">
+                            <div class="optionBackground">
+                                <div class="imageBorder">
+                                    <img src="img/arrowUp.png" alt="Bag">
+                                </div>
+                                <div class="title">Inventory Upgrade</div>
+                                <div class="desc">+1 space to max inventory</div>
+                                <div class="price" id="shopInvUpgPrc"></div>
+                                <div class="amount" id="shopInvUpgAmt"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="upgradeClick()">
+                            <div class="optionBackground">
+                                <div class="imageBorder">
+                                    <img src="img/arrowUp.png" alt="Bag">
+                                </div>
+                                <div class="title">Click Upgrade</div>
+                                <div class="desc">+$0.01 per click</div>
+                                <div class="price" id="shopClkUpgPrc"></div>
+                                <div class="amount" id="shopClkUpgAmt"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="collection" data-tab-content>
+                <p>Collection</p>
+            </div>
+            <div id="stats" data-tab-content>
+                <div class="statContainer">
+                    <div class="statTable">
+                        <table>
+                            <tr>
+                                <th>Total Money Accepted:</th>
+                                <td id="totalMoneyAccepted"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Money Spent:</th>
+                                <td id="totalMoneySpent"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Cards Sold:</th>
+                                <td id="totalCardsSold"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Packs Opened:</th>
+                                <td id="totalPacksOpened"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Energy Pulled:</th>
+                                <td id="totalEnergyPulled"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Commons Pulled:</th>
+                                <td id="totalCommonsPulled"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Uncommons Pulled:</th>
+                                <td id="totalUncommonsPulled"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Rares Pulled:</th>
+                                <td id="totalRaresPulled"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Reverse Pulled:</th>
+                                <td id="totalReversePulled"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Holo Rares Pulled:</th>
+                                <td id="totalHoloRaresPulled"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Ultra Rares Pulled:</th>
+                                <td id="totalUltraRaresPulled"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Reverse Secrets Pulled:</th>
+                                <td id="totalReverseSecretsPulled"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Secret Rares Pulled:</th>
+                                <td id="totalSecretRaresPulled"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <button class="tradeButton" onclick="accept()">ACCEPT</button>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
