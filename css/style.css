@@ -350,6 +350,10 @@ body {
     user-select: none; /* Standard */
 }
 
+.locked {
+    opacity: 75%;
+}
+
 .inventoryItem:hover {
     margin-top: 3px;
     margin-bottom: 4px;

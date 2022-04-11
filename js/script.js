@@ -36,6 +36,7 @@ let totalSecretRaresPulled = 0;
 let lastRand;
 let random;
 let selectedCards;
+let cntrlIsPressed = false;
 
 // collection
 const collection = {
@@ -198,6 +199,7 @@ $('#popupCheckbox').change(function() {
     }
     saveGameState()
 });
+
 $('#clickCheckbox').change(function() {
     if (this.checked) {
         clickSell = true;
@@ -206,6 +208,15 @@ $('#clickCheckbox').change(function() {
     }
     resetInventory()
     saveGameState()
+});
+
+$(document).keydown(function(event){
+    if(event.which=="17")
+        cntrlIsPressed = true;
+});
+
+$(document).keyup(function(){
+    cntrlIsPressed = false;
 });
 
 // ==================== PACKS ==================== //
@@ -1168,7 +1179,7 @@ function drawItem(array, rarity, itemId, holo) {
     const price = "$" + array[1].toFixed(2);
     const img = array[2];
     $(".inventoryItems").append('<div class="inventoryItem ' + rarity + revCheck(holo) +'" id="'+ itemId +'" title="' + name + '"><div class="cardPrice">' + price + '</div> <img src=' + img + '> </div>');
-    if (clickSell) document.getElementById(itemId).setAttribute("onclick", "sellItem('"+itemId+"')");
+    if (clickSell) document.getElementById(itemId).setAttribute("onclick", "clickItem('"+itemId+"')");
     inv += 1;
 }
 
@@ -1207,19 +1218,36 @@ function raritySwitch(rarity){
     }
 }
 
+function clickItem(itemId) {
+    const div = document.getElementById(itemId);
+    if (cntrlIsPressed) {
+        if (div.classList.contains('locked')) {
+            div.classList.remove('locked');
+        } else {
+            div.classList.add('locked');
+        }
+    }else {
+        sellItem(itemId)
+    }
+}
+
 function sellItem(itemId) {
     const div = document.getElementById(itemId);
-    div.parentNode.removeChild(div);
-    inv -= 1;
-    wallet += inventory[itemId].price;
-    value -= inventory[itemId].price;
-    delete inventory[itemId];
-    totalCardsSold ++;
+    if (div.classList.contains('locked')) {
+        return
+    }else {
+        div.parentNode.removeChild(div);
+        inv -= 1;
+        wallet += inventory[itemId].price;
+        value -= inventory[itemId].price;
+        delete inventory[itemId];
+        totalCardsSold ++;
 
-    updateInv()
-    updateWallet();
-    updateValue();
-    updateStats();
+        updateInv()
+        updateWallet();
+        updateValue();
+        updateStats();
+    }
 }
 
 function selectPack(selection) {
