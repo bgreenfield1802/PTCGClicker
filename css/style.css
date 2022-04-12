@@ -313,13 +313,35 @@ body {
 .inventoryInfo {
     position: fixed;
     font-size: 11pt;
-    right: 5px;
     padding: 5px;
     color: #4c4f52;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
+}
+
+.value {
+    position: fixed;
+    right: 5px;
+}
+
+.sortOption {
+    margin: 0 5px;
+    padding: 0 3px;
+    border: 1px #4c4f52 solid;
+    border-radius: 5px;
+    background-color: #161616;
+    cursor: pointer;
+}
+
+.sortOption:hover {
+    color: #bebebe;
+    margin: 0 5px;
+    padding: 0 3px;
+    border: 1px #C25B56 solid;
+    border-radius: 5px;
+    background-color: #161616;
 }
 
 .inventoryItems {
@@ -352,6 +374,15 @@ body {
 
 .locked {
     opacity: 75%;
+}
+
+.jumbo {
+    width: 149px;
+    height: 207px;
+}
+
+.inventoryItem.jumbo {
+    border-radius: 10px;
 }
 
 .inventoryItem:hover {
@@ -426,6 +457,26 @@ body {
 .ultraHolo:hover:after {
     overflow: hidden;
     left: 150px;
+    transition: .5s ease-in-out;
+}
+
+.jumbo.ultraHolo:after {
+    content: "";
+    position: relative;
+    top: -240px;
+    left: -125px;
+    display: block;
+    width: 35px;
+    height: 280px;
+    background: rgba(255, 255, 255, 0.5);
+    transform: rotate(35deg);
+    -webkit-filter: blur(15px);
+    transition: none;
+}
+
+.jumbo.ultraHolo:hover:after {
+    overflow: hidden;
+    left: 250px;
     transition: .5s ease-in-out;
 }
 
@@ -552,6 +603,19 @@ body {
     display: block;
 }
 
+.option .imageBorder.product {
+    width: 100px;
+    margin-left: -8px;
+    margin-top: 20px;
+}
+
+.option .imageBorder.product img{
+    height: 80px;
+    margin-top: 4px;
+    margin-left: 14px;
+    display: block;
+}
+
 .optionBackground .title {
     color: white;
     font-size: 13.5pt;
@@ -568,6 +632,10 @@ body {
     left: 100px;
     margin: 10px;
     width: 300px;
+}
+
+.desc ul {
+    list-style-type: circle;
 }
 
 .optionBackground .price {
@@ -606,7 +674,8 @@ body {
     padding: 10px;
     position: relative;
     background-color: #161616;
-    border: 1px #C25B56 solid;
+    border: 1px #4c4f52 solid;
+    border-radius: 5px;
 }
 
 .statTable th {
@@ -711,6 +780,32 @@ body {
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
+}
+
+div.pack {
+    /*border: 2px #919191 solid;*/
+    padding: 2px;
+    border: none;
+    /*border-bottom: 2px #B0C3D9 solid;*/
+    /*border-right: 2px #B0C3D9 solid;*/
+    border-radius: 5px;
+}
+
+div.pack img {
+    margin: 50% 50%;
+    width: 54px;
+    transform: translate(-50%, -36%);
+}
+
+div.promo {
+    border: 2px #1f8509 solid;
+    /*border-bottom: 2px #B0C3D9 solid;*/
+    /*border-right: 2px #B0C3D9 solid;*/
+    border-radius: 5px;
+}
+
+div.promo .cardPrice {
+    border-top: 2px #1f8509 solid;
 }
 
 div.energy {
