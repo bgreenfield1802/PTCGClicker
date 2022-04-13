@@ -122,11 +122,11 @@ body {
     background-color: #161616;
     border-bottom: 1px #C25B56 solid;
     width: 575px;
-    height: 350px;
+    height: 410px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateY(-301px);
+    transform: translateY(-361px);
     transition: .5s ease-in-out;
     z-index: 3;
 }
@@ -151,7 +151,7 @@ body {
     padding-left: 5px;
 }
 
-.clearGameState, .saveGame {
+.clearGameState, .saveGame, .exportGameState {
     font-size: 17px;
     font-family: Rajdhani, sans-serif;
     text-align: center;
@@ -172,11 +172,11 @@ body {
     overflow: hidden;
 }
 
-.clearGameState:hover, .saveGame:hover {
+.clearGameState:hover, .saveGame:hover, .exportGameState:hover {
     transform: scale(1.05);
 }
 
-.clearGameState:active, .saveGame:active {
+.clearGameState:active, .saveGame:active, .exportGameState:active {
     transform: scale(1);
 }
 

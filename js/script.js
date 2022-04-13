@@ -5,7 +5,6 @@ let wallet = 7.5;
 let value = 0;
 let moneyPerClick = 0.1;
 let packSel = "swsh1";
-let rarity;
 let itemCounter = 0;
 let inventory = {};
 let inventoryUpgPrice = 15;
@@ -35,6 +34,7 @@ let totalUltraRaresPulled = 0;
 let totalSecretRaresPulled = 0;
 
 // dont save
+let rarity;
 let lastRand;
 let random;
 let selectedCards;
@@ -162,7 +162,6 @@ tabs.forEach(tab => {
         tabs.forEach(tab => {
             tab.classList.remove('active')
         })
-        console.log(tabs)
         if (tab.classList.contains('collection')) {
             document.getElementById('collectionTab').classList.add('active')
         }else {
@@ -188,6 +187,12 @@ const gameSave = document.querySelector('.saveGame');
 gameSave.addEventListener('click', () => {
     gameSave.innerHTML = "Saved!";
     saveGameState();
+});
+
+// export save button
+const exportState = document.querySelector('.exportGameState');
+exportState.addEventListener('click', () => {
+    exportGameState();
 });
 
 // settings dropdown
@@ -450,7 +455,6 @@ function openCard(rarity, cardNum, pack, reverse, isPack, jumbo) {
     itemCounter ++;
     updateInv();
     updateValue();
-    console.log(inventory)
 }
 
 function randCard(rarity, cardPulls, pack) {
@@ -835,7 +839,7 @@ function raritySwitch(rarity){
 function selectPack(selection) {
     packSel = selection;
     let packDel = [];
-    drawPack(selection);
+    drawPack(packSel);
     for (let x in Object.keys(packs)) {
         packDel.push(Object.keys(packs)[x]);
         const element = document.getElementById(packDel[x] + "Opt");
@@ -843,7 +847,7 @@ function selectPack(selection) {
             element.classList.remove("active");
         }
     }
-    document.getElementById("pack").setAttribute("onclick", "openPack("+packSel+")");
+    document.getElementById("pack").setAttribute("onclick", "openPack('"+packSel+"')");
     document.getElementById(packSel + "Opt").classList.add("active");
 
     saveGameState();
@@ -1044,18 +1048,11 @@ function updateCollectionItems(pack) {
     document.getElementById(pack+"Col").innerHTML = '';
     while (j <= packs[pack].total) {
         if (pack == 'swshPromo') {
-            if (!collection[pack].collected.hasOwnProperty(j)) {
-                $(tempId).append("<div class=''></div><div class='colItem'><img src='"+ packs[pack].cardImg + zeroFill(j) +".png' class='unobtained'></div>");
-            }else {
-                $(tempId).append("<div class='colItem'><img src='"+ packs[pack].cardImg + zeroFill(j) +".png'></div>");
-            }
+            $(tempId).append("<div class='colItem' id='colItem"+pack+j+"'><img src='"+ packs[pack].cardImg + zeroFill(j) +".png'></div>");
         }else {
-            if (!collection[pack].collected.hasOwnProperty(j)) {
-                $(tempId).append("<div class='colItem'><img src='"+ packs[pack].cardImg + j +".png' class='unobtained'></div>");
-            }else {
-                $(tempId).append("<div class='colItem'><img src='"+ packs[pack].cardImg + j +".png'></div>");
-            }
+            $(tempId).append("<div class='colItem' id='colItem"+pack+j+"'><img src='"+ packs[pack].cardImg + j +".png'></div>");
         }
+        if (!collection[pack].collected.hasOwnProperty(j)) document.querySelector('#colItem'+pack+j+' > img').setAttribute('class', 'unobtained');
         j ++;
     }
 }
@@ -1063,6 +1060,17 @@ function updateCollectionItems(pack) {
 function inventoryClear() {
     inventory = {};
     $('.inventoryItems').html("");
+}
+
+function exportGameState() {
+    const content = saveGameState();
+    const filename = "PTCGClicker.txt"
+
+    const blob = new Blob([content], {
+        type: "text/plain;charset=utf-8"
+    });
+
+    saveAs(blob, filename);
 }
 
 function saveGameState() {
@@ -1073,7 +1081,6 @@ function saveGameState() {
         "value": value,
         "moneyPerClick": moneyPerClick,
         "packSel": packSel,
-        "rarity": rarity,
         "itemCounter": itemCounter,
         "inventory": inventory,
         "inventoryUpgPrice": inventoryUpgPrice,
@@ -1109,6 +1116,8 @@ function saveGameState() {
     setTimeout(function (){
         document.querySelector('.saveIndicator').classList.remove('open');
     },3000);
+
+    return JSON.stringify(string);
 }
 
 function loadGameState() {
@@ -1123,7 +1132,6 @@ function loadGameState() {
         value = saveGame["value"];
         moneyPerClick = saveGame["moneyPerClick"];
         packSel = saveGame["packSel"];
-        rarity = saveGame["rarity"];
         itemCounter = saveGame["itemCounter"];
         inventory = saveGame["inventory"];
         inventoryUpgPrice = saveGame["inventoryUpgPrice"];
