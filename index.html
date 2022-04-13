@@ -32,6 +32,10 @@
         <input type="checkbox" id="clickCheckbox">
         <span>Sell on Click</span>
     </li>
+    <li>
+        <input type="checkbox" id="newCardCheckbox">
+        <span>New Card Indicator</span>
+    </li>
     <div class="clearGameState">Clear Game Save</div>
     <div class="saveGame">Save</div>
 </div>
@@ -66,7 +70,7 @@
                 <li data-tab-target="#inventory" class="active tab">Inventory</li>
                 <li data-tab-target="#packs" class="tab">Packs</li>
                 <li data-tab-target="#shop" class="tab">Shop</li>
-                <li data-tab-target="#collection" class="tab">Collection</li>
+                <li data-tab-target="#collection" id="collectionTab" class="tab">Collection</li>
                 <li data-tab-target="#stats" class="tab statTab">Stats</li>
             </ul>
         </div>
@@ -78,8 +82,10 @@
                             <span class="sortOption" onclick="sortToggle('name')">Name</span>
                             <span class="sortOption" onclick="sortToggle('num')">Number</span>
                             <span class="sortOption" onclick="sortToggle('set')">Set</span>
-                            <span class="sortOption" onclick="sortToggle('rarity')">Rarity</span>
                             <span class="sortOption" onclick="sortToggle('type')">Type</span>
+                            <span class="sortOption" onclick="sortToggle('rarity')">Rarity</span>
+                            <span class="sortOption" onclick="sortToggle('price')">Price</span>
+                            <span class="sortOption" onclick="sortToggle('newCard')">New</span>
                             <span class="sortOption" onclick="sortToggle('locked')">Locked</span>
                             <span class="sortOption" onclick="sortToggle('jumbo')">Jumbo</span>
                         </span>
@@ -92,6 +98,7 @@
                 <div class="packOptions">
                     <div class="optionContainer">
                         <div id="swshPromoOpt"></div>
+                        <div id="futsalPromoOpt"></div>
                         <div class="option" id="swsh1Opt" onclick="selectPack('swsh1')">
                             <div class="optionBackground" id="swsh1"></div>
                         </div>
@@ -162,7 +169,7 @@
                 <div class="shopContainer">
                     <div class="optionContainer">
                         <div class="option" onclick="upgradeInventory()">
-                            <div class="optionBackground">
+                            <div class="optionBackground shop">
                                 <div class="imageBorder">
                                     <img src="img/arrowUp.png" alt="Arrow Up">
                                 </div>
@@ -175,7 +182,7 @@
                     </div>
                     <div class="optionContainer">
                         <div class="option" onclick="upgradeClick()">
-                            <div class="optionBackground">
+                            <div class="optionBackground shop">
                                 <div class="imageBorder">
                                     <img src="img/arrowUp.png" alt="Arrow Up">
                                 </div>
@@ -188,7 +195,7 @@
                     </div>
                     <div class="optionContainer">
                         <div class="option" onclick="purchaseProduct('prod0')">
-                            <div class="optionBackground">
+                            <div class="optionBackground shop">
                                 <div class="imageBorder product">
                                     <img src="img/products/prod0.webp" alt="prod0">
                                 </div>
@@ -200,7 +207,7 @@
                     </div>
                     <div class="optionContainer">
                         <div class="option" onclick="purchaseProduct('prod1')">
-                            <div class="optionBackground">
+                            <div class="optionBackground shop">
                                 <div class="imageBorder product">
                                     <img src="img/products/prod1.webp" alt="prod0">
                                 </div>
@@ -212,7 +219,7 @@
                     </div>
                     <div class="optionContainer">
                         <div class="option" onclick="purchaseProduct('prod2')">
-                            <div class="optionBackground">
+                            <div class="optionBackground shop">
                                 <div class="imageBorder product">
                                     <img src="img/products/prod2.webp" alt="prod0">
                                 </div>
@@ -225,8 +232,193 @@
                 </div>
             </div>
             <div id="collection" data-tab-content>
-                <p>Collection</p>
+                <div class="collectionContainer">
+                    <div id="collectionOptions">
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swshPromoCol" onclick="updateCollectionItems('swshPromo')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swshPromo.png" alt="Sword & Shield Promos">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Promos</div>
+                                    <div class="amount" id="swshPromoAmt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh1Col" onclick="updateCollectionItems('swsh1')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh1.png" alt="Sword & Shield Base Set">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Base Set</div>
+                                    <div class="amount" id="swsh1Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh2Col" onclick="updateCollectionItems('swsh2')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh2.png" alt="Sword & Shield Rebel Clash">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Rebel Clash</div>
+                                    <div class="amount" id="swsh2Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh3Col" onclick="updateCollectionItems('swsh3')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh3.png" alt="Sword & Shield Darkness Ablaze">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Darkness Ablaze</div>
+                                    <div class="amount" id="swsh3Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#futsalPromoCol" onclick="updateCollectionItems('futsalPromo')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/futsalPromo.webp" alt="Pokemon Futsal Promos">
+                                    </div>
+                                    <div class="titleRight">Pokemon Futsal Promos</div>
+                                    <div class="amount" id="futsalPromoAmt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh4Col" onclick="updateCollectionItems('swsh4')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh4.png" alt="Sword & Shield Champion's Path">
+                                    </div>
+                                    <div class="titleRight">Champion's Path</div>
+                                    <div class="amount" id="swsh4Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh5Col" onclick="updateCollectionItems('swsh5')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh5.png" alt="Sword & Shield Vivid Voltage">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Vivid Voltage</div>
+                                    <div class="amount" id="swsh5Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="mcd1Col" onclick="updateCollectionItems('mcd1')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/mcd1.webp" alt="McDonald's 25th Anniversary">
+                                    </div>
+                                    <div class="titleRight">McDonald's 25th Anniversary</div>
+                                    <div class="amount" id="mcd1Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh6Col" onclick="updateCollectionItems('swsh6')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh6.png" alt="Sword & Shield Shining Fates">
+                                    </div>
+                                    <div class="titleRight">Shining Fates</div>
+                                    <div class="amount" id="swsh6Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh7Col" onclick="updateCollectionItems('swsh7')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh7.png" alt="Sword & Shield Battle Styles">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Battle Styles</div>
+                                    <div class="amount" id="swsh7Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh8Col" onclick="updateCollectionItems('swsh8')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh8.png" alt="Sword & Shield Chilling Reign">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Chilling Reign</div>
+                                    <div class="amount" id="swsh8Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh9Col" onclick="updateCollectionItems('swsh9')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh9.png" alt="Sword & Shield Evolving Skies">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Evolving Skies</div>
+                                    <div class="amount" id="swsh9Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#cele1Col" onclick="updateCollectionItems('cele1')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/cele1.png" alt="Pokemon 25th Celebrations">
+                                    </div>
+                                    <div class="titleRight">Pokemon 25th Celebrations</div>
+                                    <div class="amount" id="cele1Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh10Col" onclick="updateCollectionItems('swsh10')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh10.png" alt="Sword & Shield Fusion Strike">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Fusion Strike</div>
+                                    <div class="amount" id="swsh10Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="optionContainer">
+                            <div class="option collection" data-tab-target="#swsh11Col" onclick="updateCollectionItems('swsh11')">
+                                <div class="optionBackground">
+                                    <div class="imageBorder">
+                                        <img src="img/logo/swsh11.png" alt="Sword & Shield Brilliant Stars">
+                                    </div>
+                                    <div class="titleRight">Sword & Shield Brilliant Stars</div>
+                                    <div class="amount" id="swsh11Amt"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="collectionDisplay"></div>
+                </div>
             </div>
+            <div class="colItems" id="swshPromoCol" data-tab-content></div>
+            <div class="colItems" id="swsh1Col" data-tab-content></div>
+            <div class="colItems" id="swsh2Col" data-tab-content></div>
+            <div class="colItems" id="swsh3Col" data-tab-content></div>
+            <div class="colItems" id="futsalPromoCol" data-tab-content></div>
+            <div class="colItems" id="swsh4Col" data-tab-content></div>
+            <div class="colItems" id="swsh5Col" data-tab-content></div>
+            <div class="colItems" id="mcd1Col" data-tab-content></div>
+            <div class="colItems" id="swsh6Col" data-tab-content></div>
+            <div class="colItems" id="swsh7Col" data-tab-content></div>
+            <div class="colItems" id="swsh8Col" data-tab-content></div>
+            <div class="colItems" id="swsh9Col" data-tab-content></div>
+            <div class="colItems" id="cele1Col" data-tab-content></div>
+            <div class="colItems" id="swsh10Col" data-tab-content></div>
+            <div class="colItems" id="swsh11Col" data-tab-content></div>
+
             <div id="stats" data-tab-content>
                 <div class="statContainer">
                     <div class="statTable">

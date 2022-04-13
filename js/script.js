@@ -16,6 +16,7 @@ let clickUpgrades = 0;
 //settings
 let popup = true;
 let clickSell = true;
+let newCardSetting = false;
 
 // statistics
 let totalMoneyAccepted = 0;
@@ -38,12 +39,15 @@ let lastRand;
 let random;
 let selectedCards;
 let cntrlIsPressed = false;
+let shiftIsPressed = false;
+// let spaceIsHeld = 0;
 let sortDirection = 'forw';
 
 // collection
-const collection = {
+let collection = {
     swshPromo: {
-
+        collectedTotal: 0,
+        collected: {},
     },
     swsh1: {
         collectedTotal: 0,
@@ -62,6 +66,10 @@ const collection = {
         secretsCollectedTotal: 0,
         collected: {},
         secretsCollected: {}
+    },
+    futsalPromo: {
+        collectedTotal: 0,
+        collected: {},
     },
     swsh4: {
         collectedTotal: 0,
@@ -130,15 +138,17 @@ const collection = {
 
 loadGameState()
 
-updateInv();
-updateWallet();
-updateValue();
-updateStats();
-updateShopItems();
+updateInv()
+updateWallet()
+updateValue()
+updateStats()
+updateShopItems()
 updateProductShop()
+updateCollectionMenu()
 
 document.getElementById('popupCheckbox').checked = !popup;
 document.getElementById('clickCheckbox').checked = clickSell;
+document.getElementById('newCardCheckbox').checked = newCardSetting;
 
 // tabs
 const tabs = document.querySelectorAll('[data-tab-target]')
@@ -152,7 +162,12 @@ tabs.forEach(tab => {
         tabs.forEach(tab => {
             tab.classList.remove('active')
         })
-        tab.classList.add('active')
+        console.log(tabs)
+        if (tab.classList.contains('collection')) {
+            document.getElementById('collectionTab').classList.add('active')
+        }else {
+            tab.classList.add('active')
+        }
         target.classList.add('active')
     })
 })
@@ -213,6 +228,16 @@ $('#clickCheckbox').change(function() {
     saveGameState()
 });
 
+$('#newCardCheckbox').change(function() {
+    if (this.checked) {
+        newCardSetting = true;
+    } else {
+        newCardSetting = false;
+    }
+    resetInventory()
+    saveGameState()
+});
+
 $(document).keydown(function(event){
     if(event.which=="17")
         cntrlIsPressed = true;
@@ -222,9 +247,30 @@ $(document).keyup(function(){
     cntrlIsPressed = false;
 });
 
+$(document).keydown(function(event){
+    if(event.which=="16")
+        shiftIsPressed = true;
+});
+
+$(document).keyup(function(){
+    shiftIsPressed = false;
+});
+
+// $(document).keydown(function(event){
+//     if(event.which=="32")
+//         if (spaceIsHeld == 0){
+//             accept()
+//             spaceIsHeld = 1;
+//         }
+// });
+//
+// $(document).keyup(function(){
+//     spaceIsHeld = 0;
+// });
+
 // display pack shop
 for (let i in Object.keys(packs)){
-    if (i == 0) {
+    if (i == 0 || i == 4) {
     }else {
         updatePack(Object.keys(packs)[i]);
     }
@@ -232,7 +278,7 @@ for (let i in Object.keys(packs)){
 }
 
 // default pack
-drawPack();
+drawPack(packSel);
 document.getElementById("pack").setAttribute("onclick", "openPack('"+packSel+"')");
 document.getElementById(packSel + "Opt").classList.add("active");
 
@@ -276,14 +322,14 @@ function openPack(pack, free) {
         i++;
     }
     i = 0;
-    randCard("common", packs[pack].contents[1])
+    randCard("common", packs[pack].contents[1], pack)
     while (i < packs[pack].contents[1]) {
         openCard("common", selectedCards[i], pack);
         totalCommonsPulled ++;
         i++;
     }
     i = 0;
-    randCard("uncommon", packs[pack].contents[1])
+    randCard("uncommon", packs[pack].contents[1], pack)
     while (i < packs[pack].contents[2]) {
         openCard("uncommon", selectedCards[i], pack);
         totalUncommonsPulled ++;
@@ -291,12 +337,12 @@ function openPack(pack, free) {
     }
     i = 0;
     while (i < packs[pack].contents[3]) {
-        randReverse();
+        randReverse(pack);
         i++;
     }
     i = 0;
     while (i < packs[pack].contents[4]) {
-        randRare();
+        randRare(pack);
         i++;
     }
     updateWallet();
@@ -322,7 +368,8 @@ function openEnergy() {
         holo: 0,
         img: card.img,
         locked: false,
-        jumbo: false
+        jumbo: false,
+        newCard: false
     }
 
     const selectedCard = itemDisp(inventory[itemId].name, inventory[itemId].price, inventory[itemId].img);
@@ -354,7 +401,8 @@ function openCard(rarity, cardNum, pack, reverse, isPack, jumbo) {
                 holo: 2,
                 img: card.img,
                 locked: false,
-                jumbo: jumbo
+                jumbo: jumbo,
+                newCard: false
             }
             let temp = inventory[itemId].name;
             const array = temp.split("|");
@@ -372,7 +420,8 @@ function openCard(rarity, cardNum, pack, reverse, isPack, jumbo) {
                 holo: card.holo,
                 img: card.img,
                 locked: false,
-                jumbo: jumbo
+                jumbo: jumbo,
+                newCard: false
             }
         }
         const selectedCard = itemDisp(inventory[itemId].name, inventory[itemId].price, inventory[itemId].img);
@@ -384,14 +433,15 @@ function openCard(rarity, cardNum, pack, reverse, isPack, jumbo) {
             id: itemId,
             set: pack,
             name: packs[pack].name,
-            num: -1,
+            num: -10,
             price: 0,
             rarity: -2,
             type: "pack",
             holo: 0,
             img: packs[pack].img,
             locked: false,
-            jumbo: jumbo
+            jumbo: jumbo,
+            new: false
         }
         drawItem("", "", itemId, "", isPack, pack)
     }
@@ -400,11 +450,12 @@ function openCard(rarity, cardNum, pack, reverse, isPack, jumbo) {
     itemCounter ++;
     updateInv();
     updateValue();
+    console.log(inventory)
 }
 
-function randCard(rarity, cardPulls) {
+function randCard(rarity, cardPulls, pack) {
     const min = 1;
-    const max = ObjectLength(cards[packSel][rarity]);
+    const max = ObjectLength(cards[pack][rarity]);
     selectedCards = [];
     while (selectedCards.length < cardPulls) {
         random = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -440,65 +491,65 @@ function accept () {
     updateStats();
 }
 
-function randReverse() {
+function randReverse(pack) {
     const randNum = Math.random();
-    if (ObjectLength(cards[packSel].reverseSecret) === 0){
+    if (ObjectLength(cards[pack].reverseSecret) === 0){
         const tempRarity = selectReverseRarity();
-        randCard(tempRarity, 1)
-        openCard(tempRarity, selectedCards[0], packSel, true);
+        randCard(tempRarity, 1, pack)
+        openCard(tempRarity, selectedCards[0], pack, true);
         totalReversePulled ++;
     }else {
         if (randNum >= 0.3){
             // normal reverse
             const tempRarity = selectReverseRarity();
-            randCard(tempRarity, 1)
-            openCard(tempRarity, selectedCards[0], packSel, true);
+            randCard(tempRarity, 1, pack)
+            openCard(tempRarity, selectedCards[0], pack, true);
             totalReversePulled ++;
         }else{
             // secret reverse
-            randCard("reverseSecret", 1)
-            openCard("reverseSecret", selectedCards[0], packSel);
+            randCard("reverseSecret", 1, pack)
+            openCard("reverseSecret", selectedCards[0], pack);
             totalReverseSecretsPulled ++;
         }
     }
 }
 
-function randRare() {
+function randRare(pack) {
     let randNum = Math.random();
     if (randNum >= 0.6){
         // normal rare
-        randCard("rare", 1)
-        openCard("rare", selectedCards[0], packSel);
+        randCard("rare", 1, pack)
+        openCard("rare", selectedCards[0], pack);
         totalRaresPulled ++;
     }else if (randNum >= 0.2){
         // holo rare
-        randCard("holoRare", 1)
-        openCard("holoRare", selectedCards[0], packSel);
+        randCard("holoRare", 1, pack)
+        openCard("holoRare", selectedCards[0], pack);
         totalHoloRaresPulled ++;
     }else if (randNum >= 0.01){
         // ultra rare
         randNum = Math.random();
         if (randNum >= 0.3) {
-            randCard("ultraRare", 1)
-            openCard("ultraRare", selectedCards[0], packSel);
+            randCard("ultraRare", 1, pack)
+            openCard("ultraRare", selectedCards[0], pack);
             totalUltraRaresPulled ++;
         } else {
             // full art
-            randCard("fullArt", 1)
-            openCard("fullArt", selectedCards[0], packSel);
+            randCard("fullArt", 1, pack)
+            openCard("fullArt", selectedCards[0], pack);
             totalFullArtsPulled ++;
         }
     }else{
         // secret rare
-        randCard("secretRare", 1)
-        openCard("secretRare", selectedCards[0], packSel);
+        randCard("secretRare", 1, pack)
+        openCard("secretRare", selectedCards[0], pack);
         totalSecretRaresPulled ++;
     }
 }
 
-function drawPack() {
+function drawPack(pack) {
     const min = 1;
-    const max = packs[packSel].imgNum;
+    const max = packs[pack].imgNum;
     if (max != 1) {
         if (lastRand === undefined) {
             random = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -513,9 +564,9 @@ function drawPack() {
         random = 1+".png";
     }
 
-    document.getElementById("packDisplayImage").src = packs[packSel].img+random;
-    document.getElementById("packName").innerHTML = packs[packSel].name;
-    document.getElementById("packPrice").innerHTML = "Price: $"+packs[packSel].price.toFixed(2);
+    document.getElementById("packDisplayImage").src = packs[pack].img+random;
+    document.getElementById("packName").innerHTML = packs[pack].name;
+    document.getElementById("packPrice").innerHTML = "Price: $"+packs[pack].price.toFixed(2);
 }
 
 function itemDisp(name, price, img) {
@@ -545,14 +596,14 @@ function drawItem(array, rarity, itemId, holo, isPack, pack) {
         const packImg = packs[pack].img+random;
 
         $(".inventoryItems").append('<div class ="inventoryItem pack" id="'+ itemId +'" title="' + packs[pack].name + '"><img src="' + packImg + '"> </div>')
-        if (clickSell) document.getElementById(itemId).setAttribute("onclick", "clickPack('"+itemId+"','"+pack+"')");
+        document.getElementById(itemId).setAttribute("onclick", "clickPack('"+itemId+"','"+pack+"')");
         inv += 1;
     }else {
         const name = array[0];
         const price = "$" + array[1].toFixed(2);
         const img = array[2];
-        $(".inventoryItems").append('<div class="inventoryItem ' + rarity + revCheck(holo) +'" id="'+ itemId +'" title="' + name + '"><div class="cardPrice">' + price + '</div> <img src=' + img + '> </div>');
-        if (clickSell) document.getElementById(itemId).setAttribute("onclick", "clickItem('"+itemId+"')");
+        $(".inventoryItems").append('<div class="inventoryItem ' + rarity + revCheck(holo)+'" id="'+ itemId +'" title="' + name + '"><div class="cardPrice">' + price + '</div><span class="'+ newCheck(itemId) +'"></span><img src=' + img + '> </div>');
+        document.getElementById(itemId).setAttribute("onclick", "clickItem('"+itemId+"')");
         if (inventory[itemId].jumbo) {
             inv += 4
         }else {
@@ -561,6 +612,28 @@ function drawItem(array, rarity, itemId, holo, isPack, pack) {
     }
     if (inventory[itemId].locked) document.getElementById(itemId).classList.add('locked');
     if (inventory[itemId].jumbo) document.getElementById(itemId).classList.add('jumbo');
+}
+
+function newCheck(itemId) {
+    const info = inventory[itemId];
+    if (info.rarity >= 0){
+        if (!info.jumbo) {
+            if (collection.hasOwnProperty(info.set)){
+                if (!collection[info.set].collected.hasOwnProperty(info.num)){
+                    inventory[itemId].newCard = true;
+                    if (newCardSetting) {
+                        return "new";
+                    }else {
+                        return "";
+                    }
+                }
+            }
+        }else {
+            // jumbo collection
+        }
+    }
+    inventory[itemId].newCard = false;
+    return "";
 }
 
 function clickPack(itemId, pack) {
@@ -574,26 +647,97 @@ function clickPack(itemId, pack) {
             inventory[itemId].locked = true;
         }
     }else {
-        const div = document.getElementById(itemId);
-        if (div.classList.contains('locked')) {
-            return
-        }else {
-            if (openPack(pack, true)) {
-                div.parentNode.removeChild(div);
-                inv -= 1;
-                delete inventory[itemId];
-            }
+        if (clickSell) {
+            const div = document.getElementById(itemId);
+            if (div.classList.contains('locked')) {
+                return
+            }else {
+                if (openPack(pack, true)) {
+                    div.parentNode.removeChild(div);
+                    inv -= 1;
+                    delete inventory[itemId];
+                }
 
-            updateInv()
-            updateValue();
-            updateStats();
-            saveGameState();
+                updateInv()
+                updateValue();
+                updateStats();
+                saveGameState();
+            }
         }
     }
 }
 
+function clickItem(itemId) {
+    const div = document.getElementById(itemId);
+    if (cntrlIsPressed) {
+        if (div.classList.contains('locked')) {
+            div.classList.remove('locked');
+            inventory[itemId].locked = false;
+            saveGameState()
+        } else {
+            div.classList.add('locked');
+            inventory[itemId].locked = true;
+            saveGameState()
+        }
+    }else if (shiftIsPressed){
+        addToCollection(itemId);
+    }else {
+        if (clickSell) sellItem(itemId);
+    }
+}
+
+function sellItem(itemId) {
+    const div = document.getElementById(itemId);
+    if (div.classList.contains('locked')) {
+        return
+    }else {
+        div.parentNode.removeChild(div);
+        if (div.classList.contains('jumbo')) {
+            inv -= 4;
+        }else {
+            inv --;
+        }
+        wallet += inventory[itemId].price;
+        value -= inventory[itemId].price;
+        delete inventory[itemId];
+        totalCardsSold ++;
+
+        updateInv()
+        updateWallet();
+        updateValue();
+        updateStats();
+    }
+}
+
+
+function addToCollection(itemId) {
+    const info = inventory[itemId];
+    if (!info.jumbo) {
+        if (collection.hasOwnProperty(info.set)){
+            if (!collection[info.set].collected.hasOwnProperty(info.num)){
+                collection[info.set].collected[info.num] = {
+                    holo: info.holo,
+                    img: info.img
+                }
+                collection[info.set].collectedTotal ++;
+                const div = document.getElementById(itemId);
+                div.parentNode.removeChild(div);
+                value -= inventory[itemId].price;
+                delete inventory[itemId];
+                resetInventory()
+                updateInv()
+                updateValue()
+                updateCollectionMenu()
+                saveGameState()
+            }
+        }
+    }else {
+        // jumbo collection
+    }
+}
+
 function sortToggle(method) {
-    if (sortDirection == 'forw') {
+    if (cntrlIsPressed) {
         sortDirection = 'back';
     }else {
         sortDirection = 'forw';
@@ -688,50 +832,10 @@ function raritySwitch(rarity){
     }
 }
 
-function clickItem(itemId) {
-    const div = document.getElementById(itemId);
-    if (cntrlIsPressed) {
-        if (div.classList.contains('locked')) {
-            div.classList.remove('locked');
-            inventory[itemId].locked = false;
-            saveGameState()
-        } else {
-            div.classList.add('locked');
-            inventory[itemId].locked = true;
-            saveGameState()
-        }
-    }else {
-        sellItem(itemId)
-    }
-}
-
-function sellItem(itemId) {
-    const div = document.getElementById(itemId);
-    if (div.classList.contains('locked')) {
-        return
-    }else {
-        div.parentNode.removeChild(div);
-        if (div.classList.contains('jumbo')) {
-            inv -= 4;
-        }else {
-            inv --;
-        }
-        wallet += inventory[itemId].price;
-        value -= inventory[itemId].price;
-        delete inventory[itemId];
-        totalCardsSold ++;
-
-        updateInv()
-        updateWallet();
-        updateValue();
-        updateStats();
-    }
-}
-
 function selectPack(selection) {
     packSel = selection;
     let packDel = [];
-    drawPack();
+    drawPack(selection);
     for (let x in Object.keys(packs)) {
         packDel.push(Object.keys(packs)[x]);
         const element = document.getElementById(packDel[x] + "Opt");
@@ -842,6 +946,27 @@ function ObjectLength(object) {
     return length;
 }
 
+function openCollection(evt, colName) {
+    // Declare all variables
+    let i, tabcontent, collection;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    collection = document.getElementsByClassName("collection");
+    for (i = 0; i < collection.length; i++) {
+        collection[i].className = collection[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(colName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
 function randSel2(item1, item2) {
     const randNum = Math.random()
     if (randNum >= 0.5) {
@@ -895,7 +1020,7 @@ function updateShopItems() {
     document.getElementById("shopInvUpgPrc").innerHTML = "Price: $"+inventoryUpgPrice.toFixed(2);
     document.getElementById("shopInvUpgAmt").innerHTML = "Amount: "+inventoryUpgrades;
     document.getElementById("shopClkUpgPrc").innerHTML = "Price: $"+clickUpgPrice.toFixed(2);
-    document.getElementById("shopClkUpgAmt").innerHTML = "Amount: "+clickUpgrades;
+    document.getElementById("shopClkUpgAmt").innerHTML = "Current: $"+moneyPerClick.toFixed(2);
 }
 
 function updateProductShop() {
@@ -903,6 +1028,35 @@ function updateProductShop() {
         document.getElementById("product"+i+"Nme").innerHTML = product["prod"+i].name;
         document.getElementById("product"+i+"Dsc").innerHTML = product["prod"+i].desc;
         document.getElementById("product"+i+"Prc").innerHTML = "Price: $"+product["prod"+i].price.toFixed(2);
+    }
+}
+
+function updateCollectionMenu() {
+    let keyArray = Object.keys(packs);
+    for (let i in keyArray) {
+        document.getElementById(keyArray[i]+"Amt").innerHTML = "Collected: "+collection[keyArray[i]].collectedTotal+"/"+packs[keyArray[i]].cards;
+    }
+}
+
+function updateCollectionItems(pack) {
+    let j = 1;
+    let tempId = "#"+pack+"Col";
+    document.getElementById(pack+"Col").innerHTML = '';
+    while (j <= packs[pack].total) {
+        if (pack == 'swshPromo') {
+            if (!collection[pack].collected.hasOwnProperty(j)) {
+                $(tempId).append("<div class=''></div><div class='colItem'><img src='"+ packs[pack].cardImg + zeroFill(j) +".png' class='unobtained'></div>");
+            }else {
+                $(tempId).append("<div class='colItem'><img src='"+ packs[pack].cardImg + zeroFill(j) +".png'></div>");
+            }
+        }else {
+            if (!collection[pack].collected.hasOwnProperty(j)) {
+                $(tempId).append("<div class='colItem'><img src='"+ packs[pack].cardImg + j +".png' class='unobtained'></div>");
+            }else {
+                $(tempId).append("<div class='colItem'><img src='"+ packs[pack].cardImg + j +".png'></div>");
+            }
+        }
+        j ++;
     }
 }
 
@@ -926,9 +1080,11 @@ function saveGameState() {
         "inventoryUpgrades": inventoryUpgrades,
         "clickUpgPrice": clickUpgPrice,
         "clickUpgrades": clickUpgrades,
+        "collection": collection,
 
         "popup": popup,
         "clickSell": clickSell,
+        "newCardSetting": newCardSetting,
 
         "totalMoneyAccepted": totalMoneyAccepted,
         "totalMoneySpent": totalMoneySpent,
@@ -974,9 +1130,11 @@ function loadGameState() {
         inventoryUpgrades = saveGame["inventoryUpgrades"];
         clickUpgPrice = saveGame["clickUpgPrice"];
         clickUpgrades = saveGame["clickUpgrades"];
+        collection = saveGame["collection"];
 
         popup = saveGame["popup"];
         clickSell = saveGame["clickSell"];
+        newCardSetting = saveGame["newCardSetting"];
 
         totalMoneyAccepted = saveGame["totalMoneyAccepted"];
         totalMoneySpent = saveGame["totalMoneySpent"];
