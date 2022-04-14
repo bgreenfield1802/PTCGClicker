@@ -16,7 +16,7 @@ const packs = {
         contents: [1,5,3,1,1], // energy, commons, uncommons, reverse, rare
         desc: "Contains 10 cards + 1 energy", imgNum: 1,
         price: 4, cards: 192, secret: 17, total: 209,
-        img: "img/swsh2/swsh_rebel_clash", cardImg: ""
+        img: "img/swsh2/swsh_rebel_clash", cardImg: "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"
     },
     swsh3: {
         name: "Sword & Shield Darkness Ablaze", name2: "Darkness Ablaze",

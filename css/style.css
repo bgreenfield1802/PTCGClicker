@@ -127,7 +127,7 @@ body {
     top: 0;
     right: 0;
     transform: translateY(-361px);
-    transition: .5s ease-in-out;
+    transition: .4s ease-in-out;
     z-index: 3;
 }
 
@@ -233,6 +233,9 @@ body {
 }
 
 .headerLogo {
+    position: absolute;
+    top: 0;
+    left: -10px;
     width: 178px;
     height: 31px;
     margin-left: 20px;
@@ -379,8 +382,25 @@ body {
     opacity: 0;
 }
 
-.locked {
-    opacity: 75%;
+.lockedOverlay {
+    position: absolute;
+    width: 70px;
+    height: 98px;
+    transform: translate(32%, -32%) scale(30%);
+    filter: drop-shadow(10px 5px 4px rgba(27, 29, 30, 0.75));
+    z-index: 50;
+    background-image: url("../img/lock.png");
+}
+
+.new {
+    /*box-shadow: 0 0 5px 0 #ffffff;*/
+    position: absolute;
+    width: 70px;
+    height: 120px;
+    transform: translate(-38%, -38%) scale(25%);
+    filter: drop-shadow(10px 5px 4px rgba(27, 29, 30, 0.75));
+    z-index: 50;
+    background-image: url("../img/notice.png");
 }
 
 .jumbo {
@@ -725,10 +745,11 @@ body {
     height: 400px;
     width: 200px;
     position: absolute;
-    top: -75px;
+    top: 0;
     right: 0;
     left: 0;
     bottom: 0;
+    transform: translate(0%, -10%);
     margin: auto;
     transition: .2s;
     cursor: pointer;
@@ -736,6 +757,7 @@ body {
 }
 
 .packDisplay img {
+    transform: translateX(3px);
     width: 200px;
     filter: drop-shadow(10px 5px 4px rgba(27, 29, 30, 0.75));
 }
@@ -766,8 +788,9 @@ body {
 }
 
 .backgroundImage {
-    height: 100%;
-    width: 100%;
+    height: 200%;
+    width: 200%;
+    transform: translate(-25%, -25%);
 }
 
 .backgroundImage:before {
@@ -927,18 +950,6 @@ div.secretRare .cardPrice {
 
 }
 
-.new {
-    /*box-shadow: 0 0 5px 0 #ffffff;*/
-    position: absolute;
-    width: 70px;
-    height: 120px;
-    transform: translate(-38%, -38%) scale(25%);
-    filter: drop-shadow(10px 5px 4px rgba(27, 29, 30, 0.75));
-    z-index: 50;
-    overflow: visible;
-    background-image: url("../img/notice.png");
-}
-
 ::-webkit-scrollbar {
     width: 13px;
 }
@@ -951,3 +962,23 @@ div.secretRare .cardPrice {
     background-color: #C25B56;
 }
 
+.toggle-button {
+    position: absolute;
+    top: 31px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    border: #C25B56 1px solid;
+    background-color: #161616;
+    border-top: 0;
+    display: none;
+}
+
+.toggle-button .bar {
+    background-image: url("../img/hamburger-menu.png");
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: 11;
+}

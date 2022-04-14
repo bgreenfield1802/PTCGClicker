@@ -1,0 +1,57 @@
+@media only screen and (max-width: 600px) {
+    .bottom, .right, .info, .left, .settingsMenu {
+        width: 100%;
+    }
+    .tradeButton {
+        width: 80%;
+        margin: 25px 10%;
+    }
+    .sortMenu {
+        display: none;
+    }
+
+    .tabContainer {
+        width: calc(100% - 50px);
+    }
+
+    .tab-content, .tabContainer {
+        /*display: none;*/
+        transform: translateX(100%);
+        transition: .3s ease-in-out;
+    }
+
+    .tab-content.active, .tabContainer.active {
+        pointer-events: all;
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .right {
+        pointer-events: none;
+        background-color: transparent;
+    }
+
+    .packDisplay {
+        margin-bottom: 260px;
+    }
+
+    .toggle-button {
+        display: flex;
+        pointer-events: all;
+    }
+}
+
+@media only screen and (max-height: 760px) {
+    .packDisplay {
+        transform: translateY(0%);
+    }
+
+    .packDisplay img {
+        width: 160px;
+        transform: translate(21px, 90px);
+    }
+    .backgroundImage {
+        transform: translate(-25%, -30%);
+    }
+
+}

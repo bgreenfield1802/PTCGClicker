@@ -1185,6 +1185,7 @@ const cards = {
             }
         }
     },
+    // SWORD & SHIELD REBEL CLASH
     swsh2: {
         // ======================== COMMON ======================== //
         common: {

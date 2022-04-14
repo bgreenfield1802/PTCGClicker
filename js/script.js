@@ -213,6 +213,15 @@ settingBtn.addEventListener('click', () => {
     }
 });
 
+// hamburger menu
+const toggleButton = document.getElementsByClassName('toggle-button')[0]
+const tabCont = document.getElementsByClassName('tab-content')[0]
+const tabContainer = document.getElementsByClassName('tabContainer')[0]
+toggleButton.addEventListener('click', () => {
+    tabCont.classList.toggle('active')
+    tabContainer.classList.toggle('active')
+})
+
 // settings
 $('#popupCheckbox').change(function() {
     if (this.checked) {
@@ -606,7 +615,7 @@ function drawItem(array, rarity, itemId, holo, isPack, pack) {
         const name = array[0];
         const price = "$" + array[1].toFixed(2);
         const img = array[2];
-        $(".inventoryItems").append('<div class="inventoryItem ' + rarity + revCheck(holo)+'" id="'+ itemId +'" title="' + name + '"><div class="cardPrice">' + price + '</div><span class="'+ newCheck(itemId) +'"></span><img src=' + img + '> </div>');
+        $(".inventoryItems").append('<div class="inventoryItem ' + rarity + revCheck(holo)+'" id="'+ itemId +'" title="' + name + '"><div class="cardPrice">' + price + '</div><span class="'+ lockedCheck(itemId) +'"></span><span class="'+ newCheck(itemId) +'"></span><img src=' + img + '> </div>');
         document.getElementById(itemId).setAttribute("onclick", "clickItem('"+itemId+"')");
         if (inventory[itemId].jumbo) {
             inv += 4
@@ -638,6 +647,14 @@ function newCheck(itemId) {
     }
     inventory[itemId].newCard = false;
     return "";
+}
+
+function lockedCheck(itemId) {
+    if (inventory[itemId].locked) {
+        return "lockedOverlay";
+    }else {
+        return "";
+    }
 }
 
 function clickPack(itemId, pack) {
@@ -683,8 +700,10 @@ function clickItem(itemId) {
             inventory[itemId].locked = true;
             saveGameState()
         }
+        resetInventory()
     }else if (shiftIsPressed){
         addToCollection(itemId);
+        updatePack()
     }else {
         if (clickSell) sellItem(itemId);
     }
@@ -716,27 +735,29 @@ function sellItem(itemId) {
 
 function addToCollection(itemId) {
     const info = inventory[itemId];
-    if (!info.jumbo) {
-        if (collection.hasOwnProperty(info.set)){
-            if (!collection[info.set].collected.hasOwnProperty(info.num)){
-                collection[info.set].collected[info.num] = {
-                    holo: info.holo,
-                    img: info.img
+    if (!info.locked) {
+        if (!info.jumbo) {
+            if (collection.hasOwnProperty(info.set)){
+                if (!collection[info.set].collected.hasOwnProperty(info.num)){
+                    collection[info.set].collected[info.num] = {
+                        holo: info.holo,
+                        img: info.img
+                    }
+                    collection[info.set].collectedTotal ++;
+                    const div = document.getElementById(itemId);
+                    div.parentNode.removeChild(div);
+                    value -= inventory[itemId].price;
+                    delete inventory[itemId];
+                    resetInventory()
+                    updateInv()
+                    updateValue()
+                    updateCollectionMenu()
+                    saveGameState()
                 }
-                collection[info.set].collectedTotal ++;
-                const div = document.getElementById(itemId);
-                div.parentNode.removeChild(div);
-                value -= inventory[itemId].price;
-                delete inventory[itemId];
-                resetInventory()
-                updateInv()
-                updateValue()
-                updateCollectionMenu()
-                saveGameState()
             }
+        }else {
+            // jumbo collection
         }
-    }else {
-        // jumbo collection
     }
 }
 
