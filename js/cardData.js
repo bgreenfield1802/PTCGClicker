@@ -1184,5 +1184,317 @@ const cards = {
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH1/SWSH1_EN_"+this.num+".png"}
             }
         }
+    },
+    swsh2: {
+        // ======================== COMMON ======================== //
+        common: {
+            card1: {
+                get name() {return "Caterpie"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.20, num: 1, rarity: 1, type: "grass", holo: 0, revPrice: 0.33,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card2: {
+                get name() {return "Scyther"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.14, num: 4, rarity: 1, type: "grass", holo: 0, revPrice: 0.29,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card3: {
+                get name() {return "Lotad"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.05, num: 7, rarity: 1, type: "grass", holo: 0, revPrice: 0.21,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card4: {
+                get name() {return "Surskit"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.04, num: 10, rarity: 1, type: "grass", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card5: {
+                get name() {return "Snover"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.03, num: 12, rarity: 1, type: "grass", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card6: {
+                get name() {return "Phantump"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.05, num: 14, rarity: 1, type: "grass", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card7: {
+                get name() {return "Grubbin"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.06, num: 16, rarity: 1, type: "grass", holo: 0, revPrice: 0.23,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card8: {
+                get name() {return "Applin"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.07, num: 20, rarity: 1, type: "grass", holo: 0, revPrice: 0.17,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card9: {
+                get name() {return "Applin"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.09, num: 21, rarity: 1, type: "grass", holo: 0, revPrice: 0.24,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card10: {
+                get name() {return "Vulpix"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.10, num: 24, rarity: 1, type: "fire", holo: 0, revPrice: 0.30,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card11: {
+                get name() {return "Growlithe"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.08, num: 27, rarity: 1, type: "fire", holo: 0, revPrice: 0.31,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card12: {
+                get name() {return "Magmar"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.05, num: 29, rarity: 1, type: "fire", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card13: {
+                get name() {return "Litwick"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.04, num: 31, rarity: 1, type: "fire", holo: 0, revPrice: 0.23,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card14: {
+                get name() {return "Galarian Mr. Mime"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.06, num: 37, rarity: 1, type: "water", holo: 0, revPrice: 0.19,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card15: {
+                get name() {return "Magikarp"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.14, num: 39, rarity: 1, type: "water", holo: 0, revPrice: 0.36,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card16: {
+                get name() {return "Wingull"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.05, num: 41, rarity: 1, type: "water", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card17: {
+                get name() {return "Tympole"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.05, num: 44, rarity: 1, type: "water", holo: 0, revPrice: 0.19,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card18: {
+                get name() {return "Galarian Darumaka"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.05, num: 47, rarity: 1, type: "water", holo: 0, revPrice: 0.18,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card19: {
+                get name() {return "Arrokuda"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.05, num: 52, rarity: 1, type: "water", holo: 0, revPrice: 0.23,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            }
+        },
+        // ======================== UNCOMMON ======================== //
+        uncommon: {
+            card1: {
+                get name() {return "Metapod"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.22, num: 2, rarity: 2, type: "grass", holo: 0, revPrice: 0.53,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card2: {
+                get name() {return "Shuckle"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.09, num: 5, rarity: 2, type: "grass", holo: 0, revPrice: 0.24,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card3: {
+                get name() {return "Heracross"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.07, num: 6, rarity: 2, type: "grass", holo: 0, revPrice: 0.21,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card4: {
+                get name() {return "Lombre"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.15, num: 8, rarity: 2, type: "grass", holo: 0, revPrice: 0.42,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card5: {
+                get name() {return "Masquerain"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.06, num: 11, rarity: 2, type: "grass", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card6: {
+                get name() {return "Lampent"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.08, num: 32, rarity: 2, type: "fire", holo: 0, revPrice: 0.27,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card7: {
+                get name() {return "Heatmor"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.05, num: 34, rarity: 2, type: "fire", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card8: {
+                get name() {return "Pelipper"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.06, num: 42, rarity: 2, type: "water", holo: 0, revPrice: 0.24,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card9: {
+                get name() {return "Palpitoad"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.04, num: 45, rarity: 2, type: "water", holo: 0, revPrice: 0.21,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            }
+        },
+        // ======================== RARE ======================== //
+        rare: {
+            card1: {
+                get name() {return "Butterfree"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.25, num: 3, rarity: 3, type: "grass", holo: 0, revPrice: 0.75,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card2: {
+                get name() {return "Ludicolo"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.21, num: 9, rarity: 3, type: "grass", holo: 0, revPrice: 0.60,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card3: {
+                get name() {return "Abomasnow"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.21, num: 13, rarity: 3, type: "grass", holo: 0, revPrice: 0.37,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card4: {
+                get name() {return "Trevenant"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.24, num: 15, rarity: 3, type: "grass", holo: 0, revPrice: 0.41,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card5: {
+                get name() {return "Ninetales"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.55, num: 25, rarity: 3, type: "fire", holo: 0, revPrice: 0.86,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card6: {
+                get name() {return "Arcanine"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.56, num: 28, rarity: 3, type: "fire", holo: 0, revPrice: 1.10,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card7: {
+                get name() {return "Magmortar"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.31, num: 30, rarity: 3, type: "fire", holo: 0, revPrice: 0.75,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card8: {
+                get name() {return "Galarian Mr. Rime"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.23, num: 38, rarity: 3, type: "water", holo: 0, revPrice: 0.46,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card9: {
+                get name() {return "Seismitoad"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.21, num: 46, rarity: 3, type: "water", holo: 0, revPrice: 0.39,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card10: {
+                get name() {return "Galarian Darmanitan"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.21, num: 48, rarity: 3, type: "water", holo: 0, revPrice: 0.38,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card11: {
+                get name() {return "Cramorant"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.21, num: 51, rarity: 3, type: "water", holo: 0, revPrice: 0.49,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card12: {
+                get name() {return "Barraskewda"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.15, num: 53, rarity: 3, type: "water", holo: 0, revPrice: 0.47,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            }
+        },
+        // ======================== HOLO RARE ======================== //
+        holoRare: {
+            card1: {
+                get name() {return "Flapple"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.59, num: 22, rarity: 4, type: "grass", holo: 3, revPrice: 0.73,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card2: {
+                get name() {return "Appletun"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.32, num: 23, rarity: 4, type: "grass", holo: 3, revPrice: 0.56,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card3: {
+                get name() {return "Chandelure"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.43, num: 33, rarity: 4, type: "fire", holo: 3, revPrice: 0.65,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card4: {
+                get name() {return "Gyarados"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.82, num: 40, rarity: 4, type: "water", holo: 3, revPrice: 1.27,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card5: {
+                get name() {return "Eiscue"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.38, num: 54, rarity: 4, type: "water", holo: 3, revPrice: 0.52,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            }
+        },
+        // ======================== ULTRA RARE ======================== //
+        ultraRare: {
+            card1: {
+                get name() {return "Rillaboom V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 1.50, num: 17, rarity: 5, type: "grass", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card2: {
+                get name() {return "Rillaboom VMAX"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 4.11, num: 18, rarity: 5, type: "grass", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card3: {
+                get name() {return "Eldegoss V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 1.18, num: 19, rarity: 5, type: "grass", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card4: {
+                get name() {return "Ninetales V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 2.59, num: 26, rarity: 5, type: "fire", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card5: {
+                get name() {return "Cinderace V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 1.28, num: 35, rarity: 5, type: "fire", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card6: {
+                get name() {return "Cinderace VMAX"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 4.17, num: 36, rarity: 5, type: "fire", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card7: {
+                get name() {return "Milotic V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 2.18, num: 43, rarity: 5, type: "water", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card8: {
+                get name() {return "Inteleon V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 1.17, num: 49, rarity: 5, type: "water", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card9: {
+                get name() {return "Inteleon VMAX"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 2.32, num: 50, rarity: 5, type: "water", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card10: {
+                get name() {return "Eiscue V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 1.14, num: 55, rarity: 5, type: "water", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            }
+        },
+        // ======================== FULL ART ======================== //
+        fullArt: {
+            card1: {
+                get name() {return "Rillaboom V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 4.01, num: 175, rarity: 5, type: "grass", holo: 5,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            }
+        },
+        // ======================== REVERSE SECRET ======================== //
+        reverseSecret: {
+        
+        },
+        // ======================== SECRET RARE ======================== //
+        secretRare: {
+            card1: {
+                get name() {return "Rillaboom VMAX"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 16.35, num: 193, rarity: 7, type: "grass", holo: 4,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            }
+        }
     }
 }
