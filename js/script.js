@@ -1093,15 +1093,27 @@ function inventoryClear() {
     $('.inventoryItems').html("");
 }
 
-function exportGameState() {
+let exportGameState = () => {
     const content = saveGameState();
     const filename = "PTCGClicker.txt"
-
     const blob = new Blob([content], {
         type: "text/plain;charset=utf-8"
     });
 
-    saveAs(blob, filename);
+    // saveAs(blob, filename);
+
+    let newLink = document.createElement("a");
+    newLink.download = filename;
+
+    if (window.webkitURL != null) {
+        newLink.href = window.webkitURL.createObjectURL(blob);
+    }
+    else {
+        newLink.href = window.URL.createObjectURL(blob);
+        newLink.style.display = "none";
+        document.body.appendChild(newLink);
+    }
+    newLink.click();
 }
 
 function saveGameState() {
