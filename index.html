@@ -26,21 +26,29 @@
     <li>
         <h2>SETTINGS</h2>
     </li>
-    <li>
-        <input type="checkbox" id="popupCheckbox">
-        <span>Disable Popups</span>
-    </li>
-    <li>
-        <input type="checkbox" id="clickCheckbox">
-        <span>Sell on Click</span>
-    </li>
-    <li>
-        <input type="checkbox" id="newCardCheckbox">
-        <span>New Card Indicator</span>
-    </li>
-    <div class="clearGameState">Clear Game Save</div>
-    <div class="saveGame">Save</div>
-    <div class="exportGameState">Export Game Save</div>
+    <div class="settingsLeft">
+        <li>
+            <input type="checkbox" id="popupCheckbox">
+            <label for="popupCheckbox">Disable Popups</label>
+        </li>
+        <li>
+            <input type="checkbox" id="clickCheckbox">
+            <label for="clickCheckbox">Sell on Click</label>
+        </li>
+        <li>
+            <input type="checkbox" id="newCardCheckbox">
+            <label for="newCardCheckbox">New Card Indicator</label>
+        </li>
+    </div>
+    <div class="settingsRight">
+        <div class="clearGameState">Clear Game Save</div>
+        <div class="exportGameState">Export Game Save</div>
+        <label for="saveGame">
+            <div class="importGameState">Import Game Save</div>
+        </label>
+        <input type="file" id="saveGame" onchange="readFile(this)" accept=".txt">
+        <div class="saveGame">Save</div>
+    </div>
 </div>
 <div class="content">
     <!--    OPEN PACK MODAL    -->

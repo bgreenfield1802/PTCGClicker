@@ -135,11 +135,11 @@ body {
     background-color: #161616;
     border-bottom: 1px #C25B56 solid;
     width: 575px;
-    height: 410px;
+    height: 310px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateY(-361px);
+    transform: translateY(-261px);
     transition: .4s ease-in-out;
     z-index: 3;
 }
@@ -160,11 +160,22 @@ body {
 
 }
 
-.settingsMenu li span {
+.settingsMenu li label {
     padding-left: 5px;
 }
 
-.clearGameState, .saveGame, .exportGameState {
+.settingsMenu input[type="file"] {
+    color: white;
+    display: none;
+}
+
+.settingsRight {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.clearGameState, .saveGame, .exportGameState, .importGameState {
     font-size: 17px;
     font-family: Rajdhani, sans-serif;
     text-align: center;
@@ -185,11 +196,11 @@ body {
     overflow: hidden;
 }
 
-.clearGameState:hover, .saveGame:hover, .exportGameState:hover {
+.clearGameState:hover, .saveGame:hover, .exportGameState:hover, .importGameState:hover {
     transform: scale(1.05);
 }
 
-.clearGameState:active, .saveGame:active, .exportGameState:active {
+.clearGameState:active, .saveGame:active, .exportGameState:active, .importGameState:active {
     transform: scale(1);
 }
 

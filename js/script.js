@@ -195,6 +195,12 @@ exportState.addEventListener('click', () => {
     exportGameState();
 });
 
+// import save button
+const importState = document.querySelector('.importGameState');
+importState.addEventListener('click', () => {
+    document.getElementById('saveGame')
+});
+
 // settings dropdown
 const settingBtn = document.querySelector('.settings');
 const settingMenu = document.querySelector('.settingsMenu');
@@ -203,13 +209,13 @@ settingBtn.addEventListener('click', () => {
     if (!menuOpen) {
         settingMenu.classList.add('open');
         menuOpen = true;
+        clearState.innerHTML = "Clear Game Save";
+        gameSave.innerHTML = "Save";
+        clearSave = 0;
     } else {
         settingBtn.classList.remove('open');
         settingMenu.classList.remove('open');
         menuOpen = false;
-        clearState.innerHTML = "Clear Game Save";
-        gameSave.innerHTML = "Save";
-        clearSave = 0;
     }
 });
 
@@ -1116,21 +1122,47 @@ let exportGameState = () => {
     newLink.click();
 }
 
+function readFile(input) {
+    let file = input.files[0];
+
+    let reader = new FileReader();
+
+    reader.readAsText(file);
+
+    reader.onload = function() {
+        importGameState(reader.result);
+    };
+
+    reader.onerror = function() {
+        console.log(reader.error);
+    };
+}
+
+function importGameState (file) {
+    inventoryClear()
+    const saveGame = JSON.parse(file)
+    loadData(saveGame)
+    drawInventory();
+    saveGameState()
+    console.log("Game Save found. Successfully imported.");
+    location.reload();
+}
+
 function saveGameState() {
     const string = {
         // "inv": inv,
+        "packSel": packSel,
+        "itemCounter": itemCounter,
+        "inventory": inventory,
         "maxInv": maxInv,
         "wallet": wallet,
         "value": value,
         "moneyPerClick": moneyPerClick,
-        "packSel": packSel,
-        "itemCounter": itemCounter,
-        "inventory": inventory,
+        "collection": collection,
         "inventoryUpgPrice": inventoryUpgPrice,
         "inventoryUpgrades": inventoryUpgrades,
         "clickUpgPrice": clickUpgPrice,
         "clickUpgrades": clickUpgrades,
-        "collection": collection,
 
         "popup": popup,
         "clickSell": clickSell,
@@ -1163,45 +1195,48 @@ function saveGameState() {
     return JSON.stringify(string);
 }
 
+function loadData(saveData) {
+    // inv = saveData["inv"];
+    maxInv = saveData["maxInv"];
+    wallet = saveData["wallet"];
+    value = saveData["value"];
+    moneyPerClick = saveData["moneyPerClick"];
+    packSel = saveData["packSel"];
+    itemCounter = saveData["itemCounter"];
+    inventory = saveData["inventory"];
+    inventoryUpgPrice = saveData["inventoryUpgPrice"];
+    inventoryUpgrades = saveData["inventoryUpgrades"];
+    clickUpgPrice = saveData["clickUpgPrice"];
+    clickUpgrades = saveData["clickUpgrades"];
+    collection = saveData["collection"];
+
+    popup = saveData["popup"];
+    clickSell = saveData["clickSell"];
+    newCardSetting = saveData["newCardSetting"];
+
+    totalMoneyAccepted = saveData["totalMoneyAccepted"];
+    totalMoneySpent = saveData["totalMoneySpent"];
+    totalCardsSold = saveData["totalCardsSold"];
+    totalPacksOpened = saveData["totalPacksOpened"];
+    totalEnergyPulled = saveData["totalEnergyPulled"];
+    totalCommonsPulled = saveData["totalCommonsPulled"];
+    totalUncommonsPulled = saveData["totalUncommonsPulled"];
+    totalReversePulled = saveData["totalReversePulled"];
+    totalReverseSecretsPulled = saveData["totalReverseSecretsPulled"];
+    totalRaresPulled = saveData["totalRaresPulled"];
+    totalHoloRaresPulled = saveData["totalHoloRaresPulled"];
+    totalFullArtsPulled = saveData["totalFullArtsPulled"];
+    totalUltraRaresPulled = saveData["totalUltraRaresPulled"];
+    totalSecretRaresPulled = saveData["totalSecretRaresPulled"];
+}
+
 function loadGameState() {
     if (localStorage.getItem("savegame") !== null) {
         inventoryClear();
         const saveGame = JSON.parse(localStorage.getItem("savegame"));
         //console.log(saveGame);
 
-        // inv = saveGame["inv"];
-        maxInv = saveGame["maxInv"];
-        wallet = saveGame["wallet"];
-        value = saveGame["value"];
-        moneyPerClick = saveGame["moneyPerClick"];
-        packSel = saveGame["packSel"];
-        itemCounter = saveGame["itemCounter"];
-        inventory = saveGame["inventory"];
-        inventoryUpgPrice = saveGame["inventoryUpgPrice"];
-        inventoryUpgrades = saveGame["inventoryUpgrades"];
-        clickUpgPrice = saveGame["clickUpgPrice"];
-        clickUpgrades = saveGame["clickUpgrades"];
-        collection = saveGame["collection"];
-
-        popup = saveGame["popup"];
-        clickSell = saveGame["clickSell"];
-        newCardSetting = saveGame["newCardSetting"];
-
-        totalMoneyAccepted = saveGame["totalMoneyAccepted"];
-        totalMoneySpent = saveGame["totalMoneySpent"];
-        totalCardsSold = saveGame["totalCardsSold"];
-        totalPacksOpened = saveGame["totalPacksOpened"];
-        totalEnergyPulled = saveGame["totalEnergyPulled"];
-        totalCommonsPulled = saveGame["totalCommonsPulled"];
-        totalUncommonsPulled = saveGame["totalUncommonsPulled"];
-        totalReversePulled = saveGame["totalReversePulled"];
-        totalReverseSecretsPulled = saveGame["totalReverseSecretsPulled"];
-        totalRaresPulled = saveGame["totalRaresPulled"];
-        totalHoloRaresPulled = saveGame["totalHoloRaresPulled"];
-        totalFullArtsPulled = saveGame["totalFullArtsPulled"];
-        totalUltraRaresPulled = saveGame["totalUltraRaresPulled"];
-        totalSecretRaresPulled = saveGame["totalSecretRaresPulled"];
-
+        loadData(saveGame)
         drawInventory();
 
         console.log("Game Save found. Successfully loaded.");
