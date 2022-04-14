@@ -719,7 +719,6 @@ function clickItem(itemId) {
         resetInventory()
     }else if (shiftIsPressed){
         addToCollection(itemId);
-        updatePack()
     }else {
         if (clickSell) sellItem(itemId);
     }
@@ -761,6 +760,7 @@ function addToCollection(itemId) {
                     }
                     collection[info.set].collectedTotal ++;
                     const div = document.getElementById(itemId);
+                    updatePack(inventory[itemId].set)
                     div.parentNode.removeChild(div);
                     value -= inventory[itemId].price;
                     delete inventory[itemId];

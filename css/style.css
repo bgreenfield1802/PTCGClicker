@@ -436,6 +436,10 @@ body {
     border-radius: 10px;
 }
 
+.jumbo .lockedOverlay {
+    transform: translate(130%, -13%) scale(60%);
+}
+
 .inventoryItem:hover {
     margin-top: 3px;
     margin-bottom: 4px;

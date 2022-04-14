@@ -1,4 +1,8 @@
 @media only screen and (max-width: 600px) {
+    .body {
+        position: relative;
+    }
+
     .bottom, .right, .info, .left, .settingsMenu {
         width: 100%;
     }
