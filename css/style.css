@@ -1,3 +1,8 @@
+:root {
+    touch-action: pan-x pan-y;
+    height: 100%
+}
+
 * {
    padding: 0;
     margin: 0;
@@ -972,6 +977,7 @@ div.secretRare .cardPrice {
     border: #C25B56 1px solid;
     background-color: #161616;
     border-top: 0;
+    border-right: 0;
     display: none;
 }
 

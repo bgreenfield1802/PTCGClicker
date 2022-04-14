@@ -39,6 +39,14 @@
         display: flex;
         pointer-events: all;
     }
+
+    .inventoryItem:hover {
+        margin: 7px -2px 0 7px;
+    }
+
+    .inventoryItem:active {
+        margin: 7px -2px 0 7px;
+    }
 }
 
 @media only screen and (max-height: 760px) {
