@@ -6,22 +6,66 @@
     .bottom, .right, .info, .left, .settingsMenu {
         width: 100%;
     }
+
+    .option {
+        width: calc(100% - 19px);
+    }
+
     .tradeButton {
         width: 80%;
         margin: 25px 10%;
     }
-    .sortMenu {
+
+    .optionBackground .amount, .shopContainer .optionBackground .price, .shopContainer .optionBackground .amount {
+        right: 8px;
+    }
+
+    .packOptions .price {
+        left: 100px;
+        top: 94px;
+    }
+
+    .sortTitle {
+        display: none;
+    }
+
+    .sortMenu .mobileOff {
         display: none;
     }
 
     .tabContainer {
         width: calc(100% - 50px);
+        overflow-x: auto;
     }
 
-    .tab-content, .tabContainer {
-        /*display: none;*/
+    .tabContainer ::-webkit-scrollbar {
+        height: 2px;
+    }
+
+    .tabContainer ::-webkit-scrollbar-thumb {
+        background-color: #727272;
+    }
+
+    .tabs {
+        transform: rotateX(180deg);
+        height: 100%;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+
+    .tab {
+        width: 100px;
+        transform: rotateX(180deg);
+    }
+
+    .tab-content {
         transform: translateX(100%);
-        transition: .3s ease-in-out;
+        transition: .4s ease-in-out;
+    }
+
+    .tabContainer {
+        transform: translateX(calc(100% + 50px));
+        transition: .4s ease-in-out;
     }
 
     .tab-content.active, .tabContainer.active {
