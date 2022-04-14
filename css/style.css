@@ -8,17 +8,10 @@
     margin: 0;
 }
 
-html {
-    overflow: hidden;
-}
-
 body {
     font-family: Rajdhani, serif;
     background: #4c4f52;
     overflow: hidden;
-    position: relative;
-    margin: 0;
-    padding: 0;
 }
 
 .navbar {
