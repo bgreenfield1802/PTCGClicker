@@ -252,6 +252,16 @@ $('#newCardCheckbox').change(function() {
     saveGameState()
 });
 
+window.addEventListener("scroll", preventMotion, false);
+window.addEventListener("touchmove", preventMotion, false);
+
+function preventMotion(event)
+{
+    window.scrollTo(0, 0);
+    event.preventDefault();
+    event.stopPropagation();
+}
+
 $(document).keydown(function(event){
     if(event.which=="17")
         cntrlIsPressed = true;
