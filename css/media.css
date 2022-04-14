@@ -48,6 +48,11 @@
     .inventoryItem:active {
         margin: 7px -2px 0 7px;
     }
+
+    .saveIndicator {
+        z-index: 2;
+        bottom: 135px;
+    }
 }
 
 @media only screen and (max-height: 760px) {

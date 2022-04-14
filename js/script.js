@@ -1101,7 +1101,7 @@ function exportGameState() {
         type: "text/plain;charset=utf-8"
     });
 
-    saveAs(blob, filename);
+    FileSaver.saveAs(blob, filename);
 }
 
 function saveGameState() {
