@@ -175,7 +175,7 @@ body {
     right: 0;
 }
 
-.clearGameState, .saveGame, .exportGameState, .importGameState {
+.clearGameState, .saveGame, .exportGameState, .importGameState, .sellItem, .addItem, .lockItem, .addDisplay, .openPack, .lockPack {
     font-size: 17px;
     font-family: Rajdhani, sans-serif;
     text-align: center;
@@ -196,11 +196,23 @@ body {
     overflow: hidden;
 }
 
-.clearGameState:hover, .saveGame:hover, .exportGameState:hover, .importGameState:hover {
+.sellItem, .addItem, .lockItem, .addDisplay, .openPack, .lockPack {
+    width: 250px;
+}
+
+.clearGameState:hover, .saveGame:hover, .exportGameState:hover, .importGameState:hover, .sellItem:hover, .addItem:hover, .lockItem:hover, .addDisplay:hover, .openPack:hover, .lockPack:hover {
     transform: scale(1.05);
 }
 
-.clearGameState:active, .saveGame:active, .exportGameState:active, .importGameState:active {
+.clearGameState:active, .saveGame:active, .exportGameState:active, .importGameState:active, .sellItem:active, .addItem:active, .lockItem:active, .addDisplay:active, .openPack:active, .lockPack:active {
+    transform: scale(1);
+}
+
+.noselect {
+    opacity: .5;
+}
+
+.noselect:hover {
     transform: scale(1);
 }
 
@@ -471,12 +483,6 @@ body {
     transition: none;
 }
 
-.holo:hover:after {
-    overflow: hidden;
-    left: 150px;
-    transition: .5s ease-in-out;
-}
-
 .reverseHolo:after {
     content: "";
     position: relative;
@@ -489,12 +495,6 @@ body {
     transform: rotate(35deg);
     -webkit-filter: blur(15px);
     transition: none;
-}
-
-.reverseHolo:hover:after {
-    overflow: hidden;
-    right: 150px;
-    transition: .5s ease-in-out;
 }
 
 .ultraHolo:after {
@@ -511,33 +511,6 @@ body {
     transition: none;
 }
 
-
-.ultraHolo:hover:after {
-    overflow: hidden;
-    left: 150px;
-    transition: .5s ease-in-out;
-}
-
-.jumbo.ultraHolo:after {
-    content: "";
-    position: relative;
-    top: -240px;
-    left: -125px;
-    display: block;
-    width: 35px;
-    height: 280px;
-    background: rgba(255, 255, 255, 0.5);
-    transform: rotate(35deg);
-    -webkit-filter: blur(15px);
-    transition: none;
-}
-
-.jumbo.ultraHolo:hover:after {
-    overflow: hidden;
-    left: 250px;
-    transition: .5s ease-in-out;
-}
-
 .secretHolo:after {
     content: "";
     position: relative;
@@ -552,17 +525,59 @@ body {
     transition: none;
 }
 
-.secretHolo:hover:after {
+.reverseSecret.secretHolo:after {
+    background: rgba(193, 34, 34, 0.5);
+}
+
+.holo:hover:after, .ultraHolo:hover:after, .secretHolo:hover:after {
     overflow: hidden;
     left: 150px;
     transition: .5s ease-in-out;
 }
 
-.reverseSecret.secretHolo:after {
-    background: rgba(193, 34, 34, 0.5);
+.reverseHolo:hover:after {
+    overflow: hidden;
+    right: 150px;
+    transition: .5s ease-in-out;
 }
 
-.cardPrice {
+.jumbo.holo:after, .jumbo.ultraHolo:after, .jumbo.secretHolo:after {
+    top: -240px;
+    left: -125px;
+    height: 280px;
+}
+
+.jumbo.holo:hover:after, .jumbo.ultraHolo:hover:after, .jumbo.secretHolo:hover:after {
+    overflow: hidden;
+    left: 250px;
+    transition: .5s ease-in-out;
+}
+
+.modal .holo:after, .modal .ultraHolo:after, .modal .secretHolo:after {
+    top: -415px;
+    left: -180px;
+    height: 470px;
+}
+
+.modal .holo:hover:after, .modal .ultraHolo:hover:after, .modal .secretHolo:hover:after {
+    overflow: hidden;
+    left: 400px;
+    transition: .5s ease-in-out;
+}
+
+.modal .reverseHolo:after {
+    top: -415px;
+    right: -410px;
+    height: 470px;
+}
+
+.modal .reverseHolo:hover:after {
+    overflow: hidden;
+    right: 200px;
+    transition: .5s ease-in-out;
+}
+
+.inventoryItem .cardPrice {
     font-size: 13px;
     position: absolute;
     bottom: 0;
@@ -578,15 +593,15 @@ body {
     user-select: none; /* Standard */
 }
 
-.holo .cardPrice, .reverseHolo .cardPrice {
+.inventoryItem.holo .cardPrice, .inventoryItem .reverseHolo .cardPrice {
     /*background: linear-gradient(#404040, #080808);*/
 }
 
-.ultraHolo .cardPrice {
+.inventoryItem.ultraHolo .cardPrice {
     /*background: linear-gradient(#808080, #262626);*/
 }
 
-.secretHolo .cardPrice  {
+.inventoryItem.secretHolo .cardPrice  {
     color: #444444;
     background: linear-gradient(#cbcbcb, #969696);
 }
@@ -788,7 +803,7 @@ body {
 }
 
 .packDisplay img {
-    transform: translateX(3px);
+    transform: translateX(5px);
     width: 200px;
     filter: drop-shadow(10px 5px 4px rgba(27, 29, 30, 0.75));
 }
@@ -879,103 +894,103 @@ div.pack img {
     transform: translate(-50%, -36%);
 }
 
-div.promo {
+.inventoryItem.promo {
     border: 2px #1f8509 solid;
     /*border-bottom: 2px #B0C3D9 solid;*/
     /*border-right: 2px #B0C3D9 solid;*/
     border-radius: 5px;
 }
 
-div.promo .cardPrice {
+.inventoryItem.promo .cardPrice {
     border-top: 2px #1f8509 solid;
 }
 
-div.energy {
+.energy {
     border: 2px #919191 solid;
     /*border-bottom: 2px #B0C3D9 solid;*/
     /*border-right: 2px #B0C3D9 solid;*/
     border-radius: 5px;
 }
 
-div.energy .cardPrice {
+.inventoryItem.energy .cardPrice {
     border-top: 2px #919191 solid;
 }
 
-div.common {
+.common {
     border: 2px #B0C3D9 solid;
     /*border-bottom: 2px #B0C3D9 solid;*/
     /*border-right: 2px #B0C3D9 solid;*/
     border-radius: 5px;
 }
 
-div.common .cardPrice {
+.common .cardPrice {
     border-top: 2px #B0C3D9 solid;
 }
 
-div.uncommon {
+.uncommon {
     border: 2px #5E98D9 solid;
     /*border-bottom: 2px #5E98D9 solid;*/
     /*border-right: 2px #5E98D9 solid;*/
     border-radius: 5px;
 }
 
-div.uncommon .cardPrice {
+.inventoryItem.uncommon .cardPrice {
     border-top: 2px #5E98D9 solid;
 }
 
-div.rare {
+.rare {
     border: 2px #4B69FF solid;
     /*border-bottom: 2px #4B69FF solid;*/
     /*border-right: 2px #4B69FF solid;*/
     border-radius: 5px;
 }
 
-div.rare .cardPrice {
+.inventoryItem.rare .cardPrice {
     border-top: 2px #4B69FF solid;
 }
 
-div.holoRare {
+.holoRare {
     border: 2px #8847FF solid;
     /*border-bottom: 2px #8847FF solid;*/
     /*border-right: 2px #8847FF solid;*/
     border-radius: 5px;
 }
 
-div.holoRare .cardPrice {
+.inventoryItem.holoRare .cardPrice {
     border-top: 2px #8847FF solid;
 }
 
-div.ultraRare {
+.ultraRare {
     border: 2px #b927cb solid;
     /*border-bottom: 2px #D32CE6 solid;*/
     /*border-right: 2px #D32CE6 solid;*/
     border-radius: 5px;
 }
 
-div.ultraRare .cardPrice {
+.inventoryItem.ultraRare .cardPrice {
     border-top: 2px #b927cb solid;
     /*border-top: 2px #D32CE6 solid;*/
 }
 
-div.reverseSecret {
+.reverseSecret {
     border: 2px #C12222 solid;
     /*border-bottom: 2px #C12222 solid;*/
     /*border-right: 2px #C12222 solid;*/
     border-radius: 5px;
 }
 
-div.reverseSecret .cardPrice {
+.inventoryItem.reverseSecret .cardPrice {
     border-top: 2px #C12222 solid;
 }
 
-div.secretRare {
+.secretRare {
     border: 2px #FFD700 solid;
     /*border-bottom: 2px #FFD700 solid;*/
     /*border-right:  2px #FFD700 solid;*/
     border-radius: 5px;
 }
 
-div.secretRare .cardPrice {
+.inventoryItem.secretRare .cardPrice {
     border-top: 2px #FFD700 solid;
     /*text-shadow: -1px -1px 0 #FFD700, 1px -1px 0 #FFD700, -1px 1px 0 #FFD700, 1px 1px 0 #FFD700;*/
 }
@@ -1013,3 +1028,142 @@ div.secretRare .cardPrice {
     position: absolute;
     z-index: 11;
 }
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 2px #C25B56 solid;
+    border-radius: 20px;
+    z-index: 100;
+    background-color: #1B1D1E;
+    color: #d9d9d9;
+    height: 600px;
+    width: 650px;
+    max-width: 95%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-header-close {
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.modal-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.selectItemHeader {
+    width: 80%;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(46px, 10px);
+    font-size: 1.25rem;
+}
+
+.modal-header .close-button, .modal-header-close .close-button {
+    color: #cbcbcb;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 2rem;
+    font-weight: bold;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.modal-body {
+    padding: 10px 15px;
+}
+
+.modal-footer {
+    position: fixed;
+    display: flex;
+    padding: 0 5%;
+    right: 0;
+    left: 0;
+    bottom: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-card-display {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-right: calc(100% / 3.2178217);
+    margin-left: calc(100% / 3.2178217);
+    transform: translate(0, 22%);
+    overflow: hidden;
+    height: 342px;
+    width: 245px;
+    border-radius: 15px;
+}
+
+.modal-card-display img, .modal-pack-display img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.modal-pack-display {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-right: calc(100% / 3.037383);
+    margin-left: calc(100% / 3.037383);
+    transform: translate(1.5%, 22%);
+    overflow: hidden;
+    height: 390px;
+    width: 214px;
+}
+
+.modal .new, .modal .lockedOverlay {
+    display: none;
+}
+
+#overlay {
+    z-index: 99;
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+

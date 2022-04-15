@@ -51,10 +51,42 @@
         <div class="saveGame">Save</div>
     </div>
 </div>
+<!-- Modals -->
+<div class="modal" id="cardModal">
+    <div class="modal-header-close">
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="selectItemHeader" id="selectItemHeader"></div>
+        <div class="modal-card" id="modal-card"></div>
+    </div>
+    <div class="modal-footer">
+        <div class="column">
+            <div class="lockItem">Lock</div>
+            <div class="addDisplay">Add to Display</div>
+        </div>
+        <div class="column">
+            <div class="sellItem" id="sellItem"></div>
+            <div class="addItem">Add to Collection</div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="packModal">
+    <div class="modal-header-close">
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="selectItemHeader" id="selectPackHeader"></div>
+        <div class="modal-pack" id="modal-pack"></div>
+    </div>
+    <div class="modal-footer">
+        <div class="lockPack">Lock</div>
+        <div class="openPack" id="openPack"></div>
+    </div>
+</div>
+<div id="overlay"></div>
+<!-- End Modals -->
 <div class="content">
-    <!--    OPEN PACK MODAL    -->
-
-    <!--    END MODAL    -->
     <div class="left">
         <div class="unboxing">
             <div class="backgroundImage"></div>
