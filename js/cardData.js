@@ -1497,5 +1497,9 @@ const cards = {
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
             }
         }
+    },
+    // SWORD & SHIELD DARKNESS ABLAZE
+    swsh3: {
+
     }
 }

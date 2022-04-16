@@ -32,11 +32,17 @@ body {
 .left {
     position: absolute;
     display: inline-block;
-    width: 70%;
+    width: calc(100% - 575px);
     height: 100%;
     left: 0;
     overflow: hidden;
     z-index: 1;
+    transition: .2s ease-in-out;
+}
+
+.left.pushed {
+    width: calc(100% - 725px);
+    left: 150px;
 }
 
 .right {
@@ -96,7 +102,7 @@ body {
     position: absolute;
     font-size: 15pt;
     color: #8c8c8c;
-    left: 5px;
+    left: 160px;
     bottom: 0;
     z-index: 5;
     transform: translateY(30px);
@@ -175,7 +181,7 @@ body {
     right: 0;
 }
 
-.clearGameState, .saveGame, .exportGameState, .importGameState, .sellItem, .addItem, .lockItem, .addDisplay, .openPack, .lockPack {
+.clearGameState, .saveGame, .exportGameState, .importGameState, .sellItem, .addItem, .lockItem, .addDisplay, .openPack, .lockPack,.removeDisplay {
     font-size: 17px;
     font-family: Rajdhani, sans-serif;
     text-align: center;
@@ -200,11 +206,15 @@ body {
     width: 250px;
 }
 
-.clearGameState:hover, .saveGame:hover, .exportGameState:hover, .importGameState:hover, .sellItem:hover, .addItem:hover, .lockItem:hover, .addDisplay:hover, .openPack:hover, .lockPack:hover {
+.removeDisplay {
+    width: 75%;
+}
+
+.clearGameState:hover, .saveGame:hover, .exportGameState:hover, .importGameState:hover, .sellItem:hover, .addItem:hover, .lockItem:hover, .addDisplay:hover, .openPack:hover, .lockPack:hover,.removeDisplay:hover {
     transform: scale(1.05);
 }
 
-.clearGameState:active, .saveGame:active, .exportGameState:active, .importGameState:active, .sellItem:active, .addItem:active, .lockItem:active, .addDisplay:active, .openPack:active, .lockPack:active {
+.clearGameState:active, .saveGame:active, .exportGameState:active, .importGameState:active, .sellItem:active, .addItem:active, .lockItem:active, .addDisplay:active, .openPack:active, .lockPack:active,.removeDisplay:active {
     transform: scale(1);
 }
 
@@ -577,6 +587,30 @@ body {
     transition: .5s ease-in-out;
 }
 
+.displayItems .holo:after, .displayItems .ultraHolo:after, .displayItems .secretHolo:after {
+    top: -225px;
+    left: -125px;
+    height: 250px;
+}
+
+.displayItems .holo:hover:after, .displayItems .ultraHolo:hover:after, .displayItems .secretHolo:hover:after {
+    overflow: hidden;
+    left: 220px;
+    transition: .5s ease-in-out;
+}
+
+.displayItems .reverseHolo:after {
+    top: -225px;
+    right: -210px;
+    height: 250px;
+}
+
+.displayItems .reverseHolo:hover:after {
+    overflow: hidden;
+    right: 120px;
+    transition: .5s ease-in-out;
+}
+
 .inventoryItem .cardPrice {
     font-size: 13px;
     position: absolute;
@@ -689,6 +723,10 @@ body {
     display: block;
 }
 
+.option.collection.locked {
+    display: none;
+}
+
 .option.collection .imageBorder {
     width: 350px;
 }
@@ -795,7 +833,7 @@ body {
     right: 0;
     left: 0;
     bottom: 0;
-    transform: translate(0%, -10%);
+    transform: translate(-5px, -7%);
     margin: auto;
     transition: .2s;
     cursor: pointer;
@@ -836,6 +874,10 @@ body {
 .backgroundImage {
     height: 200%;
     width: 200%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     transform: translate(-25%, -25%);
 }
 
@@ -878,6 +920,12 @@ body {
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
+}
+
+
+
+.displayItems::-webkit-scrollbar {
+    width: 3px;
 }
 
 div.pack {
@@ -1119,6 +1167,10 @@ div.pack img {
     border-radius: 15px;
 }
 
+#modal-display .modal-card-display {
+    transform: translate(0, 32%);
+}
+
 .modal-card-display img, .modal-pack-display img {
     position: relative;
     width: 100%;
@@ -1147,6 +1199,187 @@ div.pack img {
 
 .modal .new, .modal .lockedOverlay {
     display: none;
+}
+
+.upgradesContainer {
+    position: absolute;
+    z-index: 6;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 75px;
+}
+
+.upgradeOption {
+    margin-top: 6px;
+    margin-left: 7px;
+    aspect-ratio: 1;
+    width: 60px;
+    background-color: #1B1D1E;
+    border: 1px #4c4f52 solid;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .1s;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.upgradeOption:hover {
+    border: 2px #C25B56 solid;
+    margin-top: 5px;
+    margin-left: 6px;
+    margin-bottom: -1px;
+}
+
+.upgradeOption:active {
+    border: 1px #4c4f52 solid;
+    margin-top: 6px;
+    margin-left: 7px;
+    margin-bottom: 0;
+}
+
+.upgradeMenu {
+    background: url("../img/upgrade-menu-icon.png") no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-upgrades-container {
+    margin: 15px 50% 0;
+    transform: translateX(-50%);
+    width: 94%;
+    height: 495px;
+    float: left;
+}
+
+.modal-upgrade {
+    color: white;
+    background-color: #161616;
+    border: 1px #4c4f52 solid;
+    border-radius: 5px;
+    margin: 15px 50% 0;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 102px;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.modal-upgrade:hover {
+    margin: 14px 50% -1px;
+    border: 2px #C25B56 solid;
+}
+
+.modal-upgrade:active {
+    margin: 15px 50% 0;
+    border: 1px #4c4f52 solid;
+}
+
+.modal-upgrade .title {
+    position: absolute;
+    float: left;
+    top: 7px;
+    left: 110px;
+}
+
+.modal-upgrade .desc {
+    position: absolute;
+    color: #bebebe;
+    float: left;
+    top: 30px;
+    left: 115px;
+}
+
+.modal-upgrade .price {
+    position: absolute;
+    float: right;
+    top: 7px;
+    right: 15px;
+}
+
+.modal-upgrade .amount {
+    position: absolute;
+    float: right;
+    bottom: 7px;
+    right: 15px;
+}
+
+.modal-upgrade .imageBorder {
+    position: absolute;
+    float: left;
+    top: 5px;
+    left: 5px;
+    width: 91px;
+    height: 91px;
+}
+
+.modal-upgrade .imageBorder img {
+    aspect-ratio: 1;
+    width: 100%;
+}
+
+.displayCase {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 3;
+    background-color: #1B1D1E;
+    border-right: #C25B56 1px solid;
+    overflow: hidden;
+}
+
+.displayCaseInfoContainer {
+    font-size: 14pt;
+    background-color: #101010;
+    border-bottom: 1px solid #C25B56;
+    height: 30px;
+    margin-top: 51px;
+    width: 100%;
+    color: #C25B56;
+}
+
+.displayCaseInfo {
+    width: 100%;
+    height: 30px;
+    font-size: 14pt;
+    transform: translate(16%, 16%);
+}
+
+.displayItems {
+    margin-bottom: 10px;
+    position: relative;
+    transform: rotateY(180deg);
+    width: 100%;
+    height: calc(100% - 82px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.displayItem {
+    transform: translateX(10px) rotateY(180deg);
+    overflow: hidden;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border: transparent;
+    height: 182px;
+    width: 130px;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.displayItem img {
+    height: 100%;
+    width: 100%;
 }
 
 #overlay {

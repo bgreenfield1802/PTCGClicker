@@ -13,6 +13,7 @@
     <link rel="apple-touch-icon" sizes="128x128" href="img/logo/icon.png">
 </head>
 <body>
+<!-- header -->
 <div class="navbar">
     <ul>
         <li>
@@ -23,6 +24,8 @@
     </ul>
     <div class="settings"></div>
 </div>
+
+<!-- settings -->
 <div class="settingsMenu">
     <li>
         <h2>SETTINGS</h2>
@@ -51,7 +54,8 @@
         <div class="saveGame">Save</div>
     </div>
 </div>
-<!-- Modals -->
+
+<!-- card modal -->
 <div class="modal" id="cardModal">
     <div class="modal-header-close">
         <button data-close-button class="close-button">&times;</button>
@@ -63,7 +67,7 @@
     <div class="modal-footer">
         <div class="column">
             <div class="lockItem">Lock</div>
-            <div class="addDisplay">Add to Display</div>
+            <div class="addDisplay">Add to Display Case</div>
         </div>
         <div class="column">
             <div class="sellItem" id="sellItem"></div>
@@ -71,6 +75,7 @@
         </div>
     </div>
 </div>
+<!-- pack modal -->
 <div class="modal" id="packModal">
     <div class="modal-header-close">
         <button data-close-button class="close-button">&times;</button>
@@ -84,10 +89,80 @@
         <div class="openPack" id="openPack"></div>
     </div>
 </div>
+<!-- display modal -->
+<div class="modal" id="displayModal">
+    <div class="modal-header-close">
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="selectItemHeader" id="selectDisplayHeader"></div>
+        <div class="modal-card" id="modal-display"></div>
+    </div>
+    <div class="modal-footer">
+        <div class="removeDisplay">Remove From Display Case</div>
+    </div>
+</div>
+<!-- upgrade modal -->
+<div class="modal" id="upgradeModal">
+    <div class="modal-header-close">
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div class="selectItemHeader">Upgrades</div>
+        <div class="modal-upgrades-container">
+            <div class="modal-upgrade" onclick="upgradeInventory()">
+                <div class="imageBorder">
+                    <img src="img/upgrade-menu-icon.png" alt="Arrow Up">
+                </div>
+                <div class="title">Inventory Upgrade</div>
+                <div class="desc">+1 to maximum inventory</div>
+                <div class="price" id="shopInvUpgPrc"></div>
+                <div class="amount" id="shopInvUpgAmt"></div>
+            </div>
+            <div class="modal-upgrade" onclick="upgradeClick()">
+                <div class="imageBorder">
+                    <img src="img/upgrade-menu-icon.png" alt="Arrow Up">
+                </div>
+                <div class="title">Click Upgrade</div>
+                <div class="desc">+$0.01 per click</div>
+                <div class="price" id="shopClkUpgPrc"></div>
+                <div class="amount" id="shopClkUpgAmt"></div>
+            </div>
+            <div class="modal-upgrade" onclick="upgradeDisplay()">
+                <div class="imageBorder">
+                    <img src="img/upgrade-menu-icon.png" alt="Arrow Up">
+                </div>
+                <div class="title">Display Case Upgrade</div>
+                <div class="desc">+1 to maximum displayed cards</div>
+                <div class="price" id="shopDispUpgPrc"></div>
+                <div class="amount" id="shopDispUpgAmt"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</div>
+<!-- modal overlay -->
 <div id="overlay"></div>
-<!-- End Modals -->
+
+<!-- main content -->
 <div class="content">
-    <div class="left">
+<!--    display case -->
+    <div class="displayCase">
+        <div class="displayCaseInfoContainer">
+            <div class="displayCaseInfo">Display Case</div>
+        </div>
+        <div class="displayItems" id="displayItems"></div>
+    </div>
+
+<!--    left -->
+    <div class="left pushed">
+        <div class="upgradesContainer">
+            <div class="upgradeOption">
+                <div class="upgradeMenu" onclick="openModal('upgradeModal')"></div>
+            </div>
+        </div>
         <div class="unboxing">
             <div class="backgroundImage"></div>
             <div class="packDisplay" id="pack" onclick="">
@@ -99,7 +174,11 @@
             </div>
         </div>
     </div>
+
+<!--    save indicator -->
     <div class="saveIndicator">Saved</div>
+
+<!--    right -->
     <div class="right">
         <div class="info">
             <div class="infoLeft">
@@ -112,6 +191,7 @@
         <a href="#" class="toggle-button">
             <span class="bar"></span>
         </a>
+<!--        tabs -->
         <div class="tabContainer">
             <ul class="tabs">
                 <li data-tab-target="#inventory" class="active tab">Inventory</li>
@@ -122,6 +202,7 @@
             </ul>
         </div>
         <div class="tab-content">
+<!--            inventory tab -->
             <div id="inventory" data-tab-content class="active">
                 <div class="inventory">
                     <div class="inventoryInfo">
@@ -144,6 +225,7 @@
                     <div class="inventoryItems"></div>
                 </div>
             </div>
+<!--            packs tab -->
             <div id="packs" data-tab-content>
                 <div class="packOptions">
                     <div class="optionContainer">
@@ -215,34 +297,35 @@
                     </div>
                 </div>
             </div>
+<!--            shop tab -->
             <div id="shop" data-tab-content>
                 <div class="shopContainer">
-                    <div class="optionContainer">
-                        <div class="option" onclick="upgradeInventory()">
-                            <div class="optionBackground shop">
-                                <div class="imageBorder">
-                                    <img src="img/arrowUp.png" alt="Arrow Up">
-                                </div>
-                                <div class="title">Inventory Upgrade</div>
-                                <div class="desc">+1 to maximum inventory</div>
-                                <div class="price" id="shopInvUpgPrc"></div>
-                                <div class="amount" id="shopInvUpgAmt"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="optionContainer">
-                        <div class="option" onclick="upgradeClick()">
-                            <div class="optionBackground shop">
-                                <div class="imageBorder">
-                                    <img src="img/arrowUp.png" alt="Arrow Up">
-                                </div>
-                                <div class="title">Click Upgrade</div>
-                                <div class="desc">+$0.01 per click</div>
-                                <div class="price" id="shopClkUpgPrc"></div>
-                                <div class="amount" id="shopClkUpgAmt"></div>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="optionContainer">-->
+<!--                        <div class="option" onclick="upgradeInventory()">-->
+<!--                            <div class="optionBackground shop">-->
+<!--                                <div class="imageBorder">-->
+<!--                                    <img src="img/arrowUp.png" alt="Arrow Up">-->
+<!--                                </div>-->
+<!--                                <div class="title">Inventory Upgrade</div>-->
+<!--                                <div class="desc">+1 to maximum inventory</div>-->
+<!--                                <div class="price" id="shopInvUpgPrc"></div>-->
+<!--                                <div class="amount" id="shopInvUpgAmt"></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="optionContainer">-->
+<!--                        <div class="option" onclick="upgradeClick()">-->
+<!--                            <div class="optionBackground shop">-->
+<!--                                <div class="imageBorder">-->
+<!--                                    <img src="img/arrowUp.png" alt="Arrow Up">-->
+<!--                                </div>-->
+<!--                                <div class="title">Click Upgrade</div>-->
+<!--                                <div class="desc">+$0.01 per click</div>-->
+<!--                                <div class="price" id="shopClkUpgPrc"></div>-->
+<!--                                <div class="amount" id="shopClkUpgAmt"></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="optionContainer">
                         <div class="option" onclick="purchaseProduct('prod0')">
                             <div class="optionBackground shop">
@@ -259,7 +342,7 @@
                         <div class="option" onclick="purchaseProduct('prod1')">
                             <div class="optionBackground shop">
                                 <div class="imageBorder product">
-                                    <img src="img/products/prod1.webp" alt="prod0">
+                                    <img src="img/products/prod1.webp" alt="prod1">
                                 </div>
                                 <div class="title" id="product1Nme"></div>
                                 <div class="desc" id="product1Dsc" style="padding-left: 20px"></div>
@@ -271,7 +354,7 @@
                         <div class="option" onclick="purchaseProduct('prod2')">
                             <div class="optionBackground shop">
                                 <div class="imageBorder product">
-                                    <img src="img/products/prod2.webp" alt="prod0">
+                                    <img src="img/products/prod2.webp" alt="prod2">
                                 </div>
                                 <div class="title" id="product2Nme"></div>
                                 <div class="desc" id="product2Dsc" style="padding-left: 20px"></div>
@@ -279,8 +362,10 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+<!--            collection tab -->
             <div id="collection" data-tab-content>
                 <div class="collectionContainer">
                     <div id="collectionOptions">
@@ -450,7 +535,6 @@
                             </div>
                         </div>
                     </div>
-                    <div id="collectionDisplay"></div>
                 </div>
             </div>
             <div class="colItems" id="swshPromoCol" data-tab-content></div>
@@ -468,6 +552,7 @@
             <div class="colItems" id="cele1Col" data-tab-content></div>
             <div class="colItems" id="swsh10Col" data-tab-content></div>
             <div class="colItems" id="swsh11Col" data-tab-content></div>
+<!--            stat tab -->
             <div id="stats" data-tab-content>
                 <div class="statContainer">
                     <div class="statTable">
@@ -534,12 +619,13 @@
             </div>
         </div>
     </div>
+
+<!--    bottom -->
     <div class="bottom">
         <button class="tradeButton" onclick="accept()">ACCEPT</button>
     </div>
 </div>
 <script src="js/jquery-3.2.1.slim.min.js"></script>
-<script>$(document).ready(function(){  });</script>
 <script src="js/packData.js"></script>
 <script src="js/productData.js"></script>
 <script src="js/cardData.js"></script>

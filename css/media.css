@@ -3,6 +3,10 @@
         position: relative;
     }
 
+    .displayCase {
+        display: none;
+    }
+
     .bottom, .right, .info, .left, .settingsMenu {
         width: 100%;
     }

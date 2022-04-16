@@ -1,6 +1,7 @@
 // variables
 let inv = 0;
 let maxInv = 50;
+let maxDisCase = 4;
 let wallet = 7.5;
 let value = 0;
 let moneyPerClick = 0.1;
@@ -9,6 +10,8 @@ let itemCounter = 0;
 let inventory = {};
 let inventoryUpgPrice = 15;
 let inventoryUpgrades = 0;
+let displayUpgPrice = 50;
+let displayUpgrades = 0;
 let clickUpgPrice = 25;
 let clickUpgrades = 0;
 
@@ -45,51 +48,60 @@ let selectedCard;
 let selectedPack;
 let openSuccess;
 
-// collection
+// collection + displaycase
+let displayCase = {}
 let collection = {
     swshPromo: {
         collectedTotal: 0,
         collected: {},
+        locked: true
     },
     swsh1: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     swsh2: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     swsh3: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     futsalPromo: {
         collectedTotal: 0,
         collected: {},
+        locked: true
     },
     swsh4: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     swsh5: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     mcd1: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     swsh6: {
         collectedTotal: 0,
@@ -97,44 +109,51 @@ let collection = {
         subsetCollectedTotal: 0,
         collected: {},
         secretsCollected: {},
-        subsetCollected: {}
+        subsetCollected: {},
+        locked: true
     },
     swsh7: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     swsh8: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     swsh9: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     cele1: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     swsh10: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
-        secretsCollected: {}
+        secretsCollected: {},
+        locked: true
     },
     swsh11: {
         collectedTotal: 0,
         secretsCollectedTotal: 0,
         collected: {},
         secretsCollected: {},
-        subsetCollected: {}
+        subsetCollected: {},
+        locked: true
     }
 }
 
@@ -147,6 +166,7 @@ updateStats()
 updateShopItems()
 updateProductShop()
 updateCollectionMenu()
+updateDisplayItems()
 
 document.getElementById('popupCheckbox').checked = !popup;
 document.getElementById('clickCheckbox').checked = clickSell;
@@ -166,7 +186,7 @@ tabs.forEach(tab => {
         })
         if (tab.classList.contains('collection')) {
             document.getElementById('collectionTab').classList.add('active')
-        }else {
+        } else {
             tab.classList.add('active')
         }
         target.classList.add('active')
@@ -262,6 +282,32 @@ openPackButton.addEventListener('click', () => {
     }
 });
 
+// add display item button
+const addDisplayButton = document.querySelector('.addDisplay');
+addDisplayButton.addEventListener('click', () => {
+    if (Object.keys(displayCase).length < maxDisCase) {
+        if (!selectedCard.locked) {
+            addToDisplay(selectedCard.id)
+            const modals = document.querySelectorAll('.modal.active')
+            modals.forEach(modal => {
+                closeModal(modal)
+            })
+        }
+    }else {
+        updateSelectedCard()
+    }
+});
+
+// remove display item button
+const removeDisplayButton = document.querySelector('.removeDisplay');
+removeDisplayButton.addEventListener('click', () => {
+    removeDisplay(selectedCard.id)
+    const modals = document.querySelectorAll('.modal.active')
+    modals.forEach(modal => {
+        closeModal(modal)
+    })
+})
+
 
 // settings dropdown
 const settingBtn = document.querySelector('.settings');
@@ -348,7 +394,6 @@ closeModalButtons.forEach(button => {
 })
 
 
-
 $(document).keydown(function(event){
     if(event.which=="17")
         cntrlIsPressed = true;
@@ -422,10 +467,33 @@ function addToCollection(itemId) {
     }
 }
 
+function addToDisplay(itemId) {
+    displayCase[itemId] = inventory[itemId];
+    const div = document.getElementById(itemId);
+    div.parentNode.removeChild(div);
+    value -= inventory[itemId].price;
+    delete inventory[itemId];
+    resetInventory()
+    updateInv()
+    updateValue()
+    updateDisplayItems()
+    saveGameState()
+}
+
 function clearGameState() {
     localStorage.removeItem("savegame");
     console.log("Game save deleted!");
     location.reload();
+}
+
+function clickDisplay(itemId) {
+    if (cntrlIsPressed || shiftIsPressed) {
+        removeDisplay(itemId)
+    } else {
+        openModal('displayModal')
+        selectedCard = displayCase[itemId]
+        updateSelectedCard()
+    }
 }
 
 function clickItem(itemId) {
@@ -499,6 +567,7 @@ function drawInventory() {
         }else {
             const selectedCard = itemDisp(inventory[x].name, inventory[x].price, inventory[x].img);
             // console.log(selectedCard)
+            console.log(inventory[x])
             drawItem(selectedCard, raritySwitch(inventory[x].rarity), inventory[x].id, inventory[x].holo);
         }
     }
@@ -609,6 +678,7 @@ function itemDisp(name, price, img) {
 function loadData(saveData) {
     // inv = saveData["inv"];
     maxInv = saveData["maxInv"];
+    maxDisCase = saveData["maxDisCase"];
     wallet = saveData["wallet"];
     value = saveData["value"];
     moneyPerClick = saveData["moneyPerClick"];
@@ -617,9 +687,12 @@ function loadData(saveData) {
     inventory = saveData["inventory"];
     inventoryUpgPrice = saveData["inventoryUpgPrice"];
     inventoryUpgrades = saveData["inventoryUpgrades"];
+    displayUpgPrice = saveData["displayUpgPrice"];
+    displayUpgrades = saveData["displayUpgrades"];
     clickUpgPrice = saveData["clickUpgPrice"];
     clickUpgrades = saveData["clickUpgrades"];
     collection = saveData["collection"];
+    displayCase = saveData["displayCase"];
 
     popup = saveData["popup"];
     clickSell = saveData["clickSell"];
@@ -803,6 +876,8 @@ function openCard(rarity, cardNum, pack, reverse, isPack, jumbo) {
 }
 
 function openCollection(evt, colName) {
+
+
     // Declare all variables
     let i, tabcontent, collection;
 
@@ -965,12 +1040,12 @@ function randRare(pack) {
         randCard("rare", 1, pack)
         openCard("rare", selectedCards[0], pack);
         totalRaresPulled ++;
-    }else if (randNum >= 0.2){
+    }else if (randNum >= 0.25){
         // holo rare
         randCard("holoRare", 1, pack)
         openCard("holoRare", selectedCards[0], pack);
         totalHoloRaresPulled ++;
-    }else if (randNum >= 0.01){
+    }else if (randNum >= 0.015){
         // ultra rare
         randNum = Math.random();
         if (randNum >= 0.2) {
@@ -1064,16 +1139,30 @@ function readFile(input) {
 
 function recycleCounter() {
     const keys = Object.keys(inventory)
+    const displayKeys = Object.keys(displayCase)
+    const temp = keys.concat(displayKeys)
     itemCounter = 0;
     while (true) {
-        if (keys.length == 0) {
-            return 0;
-        } else if (!keys.includes("item"+itemCounter)) {
+        if (temp.length == 0) {
+            return 0
+        } else if (!temp.includes("item"+itemCounter)) {
             return itemCounter;
         } else {
             itemCounter ++;
         }
     }
+}
+
+function removeDisplay(itemId) {
+    inventory[itemId] = displayCase[itemId];
+    value += inventory[itemId].price;
+    delete displayCase[itemId];
+    updateInv()
+    updateValue()
+    resetInventory()
+    updateDisplayItems()
+    saveGameState()
+    document.getElementById(itemId).setAttribute("onclick", "clickItem('"+itemId+"')");
 }
 
 function resetInventory() {
@@ -1107,10 +1196,14 @@ function saveGameState() {
         "maxInv": maxInv,
         "wallet": wallet,
         "value": value,
+        "maxDisCase": maxDisCase,
         "moneyPerClick": moneyPerClick,
         "collection": collection,
+        "displayCase": displayCase,
         "inventoryUpgPrice": inventoryUpgPrice,
         "inventoryUpgrades": inventoryUpgrades,
+        "displayUpgPrice": displayUpgPrice,
+        "displayUpgrades": displayUpgrades,
         "clickUpgPrice": clickUpgPrice,
         "clickUpgrades": clickUpgrades,
 
@@ -1290,6 +1383,15 @@ function updateCollectionMenu() {
     }
 }
 
+function updateDisplayItems() {
+    $('.displayItems').html("");
+    let temp = Object.keys(displayCase);
+    for (let i in temp) {
+        $('#displayItems').append('<div class="displayItem ' + raritySwitch(displayCase[temp[i]].rarity) + revCheck(displayCase[temp[i]].holo)+'" id="'+ displayCase[temp[i]].id +'" title="' + displayCase[temp[i]].name + '"><img src="'+ displayCase[temp[i]].img +'"></div>');
+        document.getElementById(displayCase[temp[i]].id).setAttribute("onclick", "clickDisplay('"+displayCase[temp[i]].id+"')");
+    }
+}
+
 function updatePack(packId) {
     document.getElementById(packId).innerHTML = "<div class=\"imageBorder\">\n" +
         "                                    <img src=\""+packs[packId].img+1+".png\" alt=\""+packs[packId].name+"\">\n" +
@@ -1310,19 +1412,29 @@ function updateProductShop() {
 
 function updateSelectedCard() {
     document.getElementById('modal-card').innerHTML = '<div class="modal-card-display ' + raritySwitch(selectedCard.rarity) + revCheck(selectedCard.holo)+'" title="' + name + '"><img src=' + selectedCard.img + '></div>';
+    document.getElementById('modal-display').innerHTML = '<div class="modal-card-display ' + raritySwitch(selectedCard.rarity) + revCheck(selectedCard.holo)+'" title="' + name + '"><img src=' + selectedCard.img + '></div>';
     document.getElementById('sellItem').innerHTML = "Sell ($" + selectedCard.price.toFixed(2) + ")";
     document.getElementById('selectItemHeader').innerHTML = selectedCard.name
+    document.getElementById('selectDisplayHeader').innerHTML = selectedCard.name
+
+    if (Object.keys(displayCase).length == maxDisCase) {
+        document.querySelector('.addDisplay').classList.add('noselect')
+    }else {
+        if (selectedCard.locked) {
+            document.querySelector('.addDisplay').classList.add('noselect')
+        }else {
+            document.querySelector('.addDisplay').classList.remove('noselect')
+        }
+    }
 
     if (selectedCard.locked) {
         document.querySelector('.lockItem').innerHTML = 'Unlock'
         document.querySelector('.sellItem').classList.add('noselect')
         document.querySelector('.addItem').classList.add('noselect')
-        document.querySelector('.addDisplay').classList.add('noselect')
     }else {
         document.querySelector('.lockItem').innerHTML = 'Lock'
         document.querySelector('.sellItem').classList.remove('noselect')
         document.querySelector('.addItem').classList.remove('noselect')
-        document.querySelector('.addDisplay').classList.remove('noselect')
     }
 
     if (collection.hasOwnProperty(selectedCard.set)) {
@@ -1357,7 +1469,9 @@ function updateSelectedPack() {
 
 function updateShopItems() {
     document.getElementById("shopInvUpgPrc").innerHTML = "Price: $"+inventoryUpgPrice.toFixed(2);
-    document.getElementById("shopInvUpgAmt").innerHTML = "Amount: "+inventoryUpgrades;
+    document.getElementById("shopInvUpgAmt").innerHTML = "Current: "+maxInv;
+    document.getElementById("shopDispUpgPrc").innerHTML = "Price: $"+displayUpgPrice.toFixed(2);
+    document.getElementById("shopDispUpgAmt").innerHTML = "Current: "+maxDisCase;
     document.getElementById("shopClkUpgPrc").innerHTML = "Price: $"+clickUpgPrice.toFixed(2);
     document.getElementById("shopClkUpgAmt").innerHTML = "Current: $"+moneyPerClick.toFixed(2);
 }
@@ -1397,6 +1511,23 @@ function upgradeClick() {
         clickUpgPrice *= 1.05;
     }else {
         wallet += clickUpgPrice;
+    }
+    updateInv();
+    updateWallet();
+    updateShopItems();
+    updateStats();
+    saveGameState();
+}
+
+function upgradeDisplay() {
+    wallet -= displayUpgPrice;
+    if (wallet >= 0) {
+        totalMoneySpent += displayUpgPrice;
+        maxDisCase ++;
+        displayUpgrades ++;
+        displayUpgPrice *= 1.05;
+    }else {
+        wallet += displayUpgPrice;
     }
     updateInv();
     updateWallet();
