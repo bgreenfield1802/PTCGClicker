@@ -182,7 +182,12 @@
     }
 
     .packDisplay {
-        margin-bottom: 260px;
+        margin-bottom: 230px;
+        transform: scale(.9);
+    }
+
+    .backgroundImage {
+        transform: translate(-25%, -28%);
     }
 
     .settingsRight {
