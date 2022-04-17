@@ -27,10 +27,10 @@
 
 <!-- settings -->
 <div class="settingsMenu">
-    <li>
-        <h2>SETTINGS</h2>
-    </li>
     <div class="settingsLeft">
+        <li>
+            <h2>SETTINGS</h2>
+        </li>
         <li>
             <input type="checkbox" id="popupCheckbox">
             <label for="popupCheckbox">Disable Popups</label>
@@ -157,7 +157,7 @@
     </div>
 
 <!--    left -->
-    <div class="left pushed">
+    <div class="left">
         <div class="upgradesContainer">
             <div class="upgradeOption">
                 <div class="upgradeMenu" onclick="openModal('upgradeModal')"></div>
@@ -300,32 +300,6 @@
 <!--            shop tab -->
             <div id="shop" data-tab-content>
                 <div class="shopContainer">
-<!--                    <div class="optionContainer">-->
-<!--                        <div class="option" onclick="upgradeInventory()">-->
-<!--                            <div class="optionBackground shop">-->
-<!--                                <div class="imageBorder">-->
-<!--                                    <img src="img/arrowUp.png" alt="Arrow Up">-->
-<!--                                </div>-->
-<!--                                <div class="title">Inventory Upgrade</div>-->
-<!--                                <div class="desc">+1 to maximum inventory</div>-->
-<!--                                <div class="price" id="shopInvUpgPrc"></div>-->
-<!--                                <div class="amount" id="shopInvUpgAmt"></div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="optionContainer">-->
-<!--                        <div class="option" onclick="upgradeClick()">-->
-<!--                            <div class="optionBackground shop">-->
-<!--                                <div class="imageBorder">-->
-<!--                                    <img src="img/arrowUp.png" alt="Arrow Up">-->
-<!--                                </div>-->
-<!--                                <div class="title">Click Upgrade</div>-->
-<!--                                <div class="desc">+$0.01 per click</div>-->
-<!--                                <div class="price" id="shopClkUpgPrc"></div>-->
-<!--                                <div class="amount" id="shopClkUpgAmt"></div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
                     <div class="optionContainer">
                         <div class="option" onclick="purchaseProduct('prod0')">
                             <div class="optionBackground shop">
@@ -335,6 +309,7 @@
                                 <div class="title" id="product0Nme"></div>
                                 <div class="desc" id="product0Dsc" style="padding-left: 20px"></div>
                                 <div class="price" id="product0Prc"></div>
+                                <div class="priceMob" id="product0PrcMob"></div>
                             </div>
                         </div>
                     </div>
@@ -347,6 +322,7 @@
                                 <div class="title" id="product1Nme"></div>
                                 <div class="desc" id="product1Dsc" style="padding-left: 20px"></div>
                                 <div class="price" id="product1Prc"></div>
+                                <div class="priceMob" id="product1PrcMob"></div>
                             </div>
                         </div>
                     </div>
@@ -359,10 +335,49 @@
                                 <div class="title" id="product2Nme"></div>
                                 <div class="desc" id="product2Dsc" style="padding-left: 20px"></div>
                                 <div class="price" id="product2Prc"></div>
+                                <div class="priceMob" id="product2PrcMob"></div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="optionContainer">
+                        <div class="option" onclick="">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="" alt="prod3">
+                                </div>
+                                <div class="title" id="product3Nme"></div>
+                                <div class="desc" id="product3Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product3Prc"></div>
+                                <div class="priceMob" id="product3PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="" alt="prod4">
+                                </div>
+                                <div class="title" id="product4Nme"></div>
+                                <div class="desc" id="product4Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product4Prc"></div>
+                                <div class="priceMob" id="product4PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="" alt="prod5">
+                                </div>
+                                <div class="title" id="product5Nme"></div>
+                                <div class="desc" id="product5Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product5Prc"></div>
+                                <div class="priceMob" id="product5PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 <!--            collection tab -->

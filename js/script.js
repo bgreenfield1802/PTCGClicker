@@ -47,6 +47,7 @@ let sortDirection = 'forw';
 let selectedCard;
 let selectedPack;
 let openSuccess;
+let clearSave = 0;
 
 // collection + displaycase
 let displayCase = {}
@@ -195,7 +196,6 @@ tabs.forEach(tab => {
 
 // clear state button
 const clearState = document.querySelector('.clearGameState');
-let clearSave = 0;
 clearState.addEventListener('click', () => {
     clearState.innerHTML = "Are you sure?";
     clearSave ++;
@@ -1407,6 +1407,7 @@ function updateProductShop() {
         document.getElementById("product"+i+"Nme").innerHTML = product["prod"+i].name;
         document.getElementById("product"+i+"Dsc").innerHTML = product["prod"+i].desc;
         document.getElementById("product"+i+"Prc").innerHTML = "Price: $"+product["prod"+i].price.toFixed(2);
+        document.getElementById("product"+i+"PrcMob").innerHTML = "$"+product["prod"+i].price.toFixed(2);
     }
 }
 

@@ -3,38 +3,21 @@
         position: relative;
     }
 
-    .displayCase {
-        display: none;
-    }
-
-    .bottom, .right, .info, .left, .settingsMenu {
+    .bottom, .right, .info, .left, .settingsMenu, .unboxing {
         width: 100%;
-    }
-
-    .option {
-        width: calc(100% - 19px);
-    }
-
-    .tradeButton {
-        width: 80%;
-        margin: 25px 10%;
     }
 
     .optionBackground .amount, .shopContainer .optionBackground .price, .shopContainer .optionBackground .amount {
         right: 8px;
     }
 
-    .packOptions .price {
-        left: 100px;
-        top: 94px;
-    }
-
-    .sortTitle {
-        display: none;
-    }
-
     .sortMenu .mobileOff {
         display: none;
+    }
+
+    .tab {
+        width: 100px;
+        transform: rotateX(180deg);
     }
 
     .tabContainer {
@@ -57,9 +40,21 @@
         overflow-x: scroll;
     }
 
-    .tab {
-        width: 100px;
-        transform: rotateX(180deg);
+    .left {
+        left: 0;
+    }
+
+    .upgradesContainer {
+        top: 33px;
+    }
+
+    .displayCase {
+        display: none;
+    }
+
+    .toggle-button {
+        display: flex;
+        pointer-events: all;
     }
 
     .tab-content {
@@ -79,18 +74,53 @@
         overflow-x: hidden;
     }
 
+    .inventoryItems {
+        top: 45px;
+    }
+
+    .option {
+        width: calc(100% - 19px);
+    }
+
+    .packOptions .price {
+        left: 100px;
+        top: 94px;
+    }
+
+    .shopContainer .option .price {
+        display: none;
+    }
+
+    .shopContainer .option .priceMob {
+        display: block;
+    }
+
+    .option.collection .titleRight, .option.collection .amount {
+        right: 8px;
+    }
+
+    #stats {
+        width: 100%;
+    }
+
+    .statContainer {
+        width: 100%;
+    }
+
+    .statTable {
+        margin: 0 5px;
+        width: calc(100% - 33px);
+        height: 100%
+    }
+
+    .tradeButton {
+        width: 80%;
+        margin: 25px 10%;
+    }
+
     .right {
         pointer-events: none;
         background-color: transparent;
-    }
-
-    .packDisplay {
-        margin-bottom: 260px;
-    }
-
-    .toggle-button {
-        display: flex;
-        pointer-events: all;
     }
 
     .inventoryItem:hover {
@@ -102,22 +132,78 @@
     }
 
     .saveIndicator {
-        z-index: 2;
+        z-index: 3;
+        left: 5px;
         bottom: 135px;
     }
-}
 
-@media only screen and (max-height: 760px) {
+    .sortTitle {
+        display: none;
+    }
+
+    .sortOption {
+        margin-bottom: 5px;
+    }
+
+    .upgradeOption {
+        width: 60px;
+    }
+
+    .modal-upgrade {
+        width: calc(100% + 20px);
+        margin: 15px -10px 0;
+        transform: translateX(0);
+    }
+
+    .modal-upgrade:hover {
+        margin: 15px -10px 0;
+        border: 1px #4c4f52 solid;}
+
+    .modal-upgrade:active {
+        margin: 15px -10px 0;
+        border: 1px #C25B56 solid;
+    }
+
+    .modal-upgrade .price {
+        left: 110px;
+        top: 74px;
+    }
+
+    .modal-upgrade .amount {
+        right: 7px;
+    }
+
+    .selectItemHeader {
+        transform: translate(20px, 0);
+    }
+
+    .value {
+        top: 47px;
+    }
+
     .packDisplay {
-        transform: translateY(0%);
+        margin-bottom: 260px;
     }
 
-    .packDisplay img {
-        width: 160px;
-        transform: translate(21px, 90px);
-    }
-    .backgroundImage {
-        transform: translate(-25%, -30%);
+    .settingsRight {
+        right: -15px;
     }
 
+    .settingsLeft {
+        transform: translateX(-15px);
+    }
+
+    .modal-card-display {
+        transform: translate(-20%, 22%);
+    }
+
+    .modal-footer .column {
+        width: 50%;
+        margin-left: 20px;
+        transform: translateX(-43px);
+    }
+
+    .modal-footer .column div {
+        width: 100%;
+    }
 }

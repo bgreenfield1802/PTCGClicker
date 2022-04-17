@@ -1283,6 +1283,31 @@ const cards = {
                 get name() {return "Arrokuda"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
                 price: 0.05, num: 52, rarity: 1, type: "water", holo: 0, revPrice: 0.23,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card20: {
+                get name() {return "Voltorb"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.04, num: 56, rarity: 1, type: "electric", holo: 0, revPrice: 0.20,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card21: {
+                get name() {return "Electabuzz"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.04, num: 58, rarity: 1, type: "electric", holo: 0, revPrice: 0.20,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card22: {
+                get name() {return "Shinx"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.05, num: 60, rarity: 1, type: "electric", holo: 0, revPrice: 0.20,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card23: {
+                get name() {return "Helioptile"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.06, num: 63, rarity: 1, type: "electric", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card24: {
+                get name() {return "Toxel"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.06, num: 68, rarity: 1, type: "electric", holo: 0, revPrice: 0.22,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
             }
         },
         // ======================== UNCOMMON ======================== //
@@ -1330,6 +1355,31 @@ const cards = {
             card9: {
                 get name() {return "Palpitoad"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
                 price: 0.04, num: 45, rarity: 2, type: "water", holo: 0, revPrice: 0.21,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card10: {
+                get name() {return "Electrode"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.08, num: 57, rarity: 2, type: "electric", holo: 0, revPrice: 0.15,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card11: {
+                get name() {return "Luxio"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.06, num: 61, rarity: 2, type: "electric", holo: 0, revPrice: 0.26,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card12: {
+                get name() {return "Heliolisk"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.07, num: 64, rarity: 2, type: "electric", holo: 0, revPrice: 0.21,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card13: {
+                get name() {return "Charjabug"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.07, num: 65, rarity: 2, type: "electric", holo: 0, revPrice: 0.21,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card14: {
+                get name() {return "Morpeko"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.15, num: 73, rarity: 2, type: "electric", holo: 0, revPrice: 0.26,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
             }
         },
@@ -1394,6 +1444,16 @@ const cards = {
                 get name() {return "Barraskewda"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
                 price: 0.15, num: 53, rarity: 3, type: "water", holo: 0, revPrice: 0.47,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card13: {
+                get name() {return "Electivire"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.28, num: 59, rarity: 3, type: "electric", holo: 0, revPrice: 0.84,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card14: {
+                get name() {return "Toxtricity"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.25, num: 69, rarity: 3, type: "electric", holo: 0, revPrice: 0.51,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
             }
         },
         // ======================== HOLO RARE ======================== //
@@ -1421,6 +1481,16 @@ const cards = {
             card5: {
                 get name() {return "Eiscue"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
                 price: 0.38, num: 54, rarity: 4, type: "water", holo: 3, revPrice: 0.52,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card6: {
+                get name() {return "Luxray"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.32, num: 62, rarity: 4, type: "electric", holo: 3, revPrice: 0.53,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card7: {
+                get name() {return "Vikavolt"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 0.36, num: 66, rarity: 4, type: "electric", holo: 3, revPrice: 0.48,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
             }
         },
@@ -1474,6 +1544,26 @@ const cards = {
             card10: {
                 get name() {return "Eiscue V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
                 price: 1.14, num: 55, rarity: 5, type: "water", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card11: {
+                get name() {return "Boltund V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 2.75, num: 67, rarity: 5, type: "electric", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card12: {
+                get name() {return "Toxtricity V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 1.33, num: 70, rarity: 5, type: "electric", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card13: {
+                get name() {return "Toxtricity VMAX"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 3.81, num: 71, rarity: 5, type: "electric", holo: 1,
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
+            },
+            card14: {
+                get name() {return "Pincurchin V"+holoCheck(this.holo)+" | "+packs.swsh2.name2+" "+zeroFill(this.num)+"/"+packs.swsh2.cards},
+                price: 1.04, num: 72, rarity: 5, type: "electric", holo: 1,
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH2/SWSH2_EN_"+this.num+".png"}
             }
         },
