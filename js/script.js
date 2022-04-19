@@ -566,8 +566,6 @@ function drawInventory() {
             drawItem("", "", inventory[x].id, "", true, inventory[x].set)
         }else {
             const selectedCard = itemDisp(inventory[x].name, inventory[x].price, inventory[x].img);
-            // console.log(selectedCard)
-            console.log(inventory[x])
             drawItem(selectedCard, raritySwitch(inventory[x].rarity), inventory[x].id, inventory[x].holo);
         }
     }

@@ -318,6 +318,10 @@ body {
     text-align: center;
     border-right: 5px solid #101010;
     transition: 0.1s;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 .statTab {
