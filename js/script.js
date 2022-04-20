@@ -48,6 +48,7 @@ let selectedCard;
 let selectedPack;
 let openSuccess;
 let clearSave = 0;
+let lastSort;
 
 // collection + displaycase
 let displayCase = {}
@@ -440,12 +441,7 @@ function addToCollection(itemId) {
         if (!info.jumbo) {
             if (collection.hasOwnProperty(info.set)){
                 if (!collection[info.set].collected.hasOwnProperty(info.num)){
-                    collection[info.set].collected[info.num] = {
-                        name: info.name,
-                        holo: info.holo,
-                        num: info.num,
-                        img: info.img
-                    }
+                    collection[info.set].collected[info.num] = info;
                     collection[info.set].collectedTotal ++;
                     const div = document.getElementById(itemId);
                     if (inventory[itemId].set != 'swshPromo' && inventory[itemId].set != 'futsalPromo') {
@@ -801,7 +797,8 @@ function openCard(rarity, cardNum, pack, reverse, isPack, jumbo) {
                 img: card.img,
                 locked: false,
                 jumbo: jumbo,
-                newCard: false
+                newCard: false,
+                infoLink: card.infoLink
             }
             let temp = inventory[itemId].name;
             const array = temp.split("|");
@@ -820,7 +817,8 @@ function openCard(rarity, cardNum, pack, reverse, isPack, jumbo) {
                 img: card.img,
                 locked: false,
                 jumbo: jumbo,
-                newCard: false
+                newCard: false,
+                infoLink: card.infoLink
             }
             if (jumbo) {
                 let temp = inventory[itemId].name;
@@ -1340,10 +1338,19 @@ function sortInventory(method) {
 }
 
 function sortToggle(method) {
-    if (cntrlIsPressed) {
-        sortDirection = 'back';
-    }else {
-        sortDirection = 'forw';
+    if (method != lastSort) {
+        lastSort = method;
+        if (method == 'newCard' || method == 'locked' || method == 'jumbo') {
+            sortDirection = 'back';
+        }else {
+            sortDirection = 'forw';
+        }
+    } else {
+        if (sortDirection == 'forw') {
+            sortDirection = 'back';
+        } else {
+            sortDirection = 'forw';
+        }
     }
     sortInventory(method)
 }

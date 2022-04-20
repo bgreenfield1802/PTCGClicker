@@ -1051,11 +1051,12 @@ div.pack img {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #101010;
+    /*background-color: #101010;*/
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #C25B56;
+    border-radius: 10px;
 }
 
 .modal {
@@ -1189,6 +1190,7 @@ div.pack img {
     bottom: 0;
     height: 100%;
     width: 75px;
+    pointer-events: none;
 }
 
 .upgradeOption {
@@ -1201,6 +1203,7 @@ div.pack img {
     border-radius: 5px;
     cursor: pointer;
     transition: .1s;
+    pointer-events: all;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
