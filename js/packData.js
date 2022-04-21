@@ -1,4 +1,8 @@
 const packs = {
+    energy: {
+        name: "Energy Pack", contents: [45,0,0,0,0], imgNum: 1,
+        img: "img/energy-stack"
+    },
     swshPromo: {
         name: "Sword & Shield Promos", name2: "SWSH Promo",
         price: 0, cards: 222, total: 222,
@@ -23,7 +27,7 @@ const packs = {
         contents: [1,5,3,1,1], // energy, commons, uncommons, reverse, rare
         desc: "Contains 10 cards + 1 energy", imgNum: 1,
         price: 4, cards: 189, secret: 12, total: 201,
-        img: "img/swsh3/swsh_darkness_ablaze", cardImg: ""
+        img: "img/swsh3/swsh_darkness_ablaze", cardImg: "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH3/SWSH3_EN_"
     },
     futsalPromo: {
         name: "Pokemon Futsal Promos", name2: "Futsal Promo",

@@ -176,7 +176,7 @@ body {
     right: 0;
 }
 
-.clearGameState, .saveGame, .exportGameState, .importGameState, .sellItem, .addItem, .lockItem, .addDisplay, .openPack, .lockPack,.removeDisplay {
+.clearGameState, .saveGame, .exportGameState, .importGameState, .sellItem, .addItem, .lockItem, .addDisplay, .openPack, .lockPack,.removeDisplay, .deletePack, .invisButton {
     font-size: 17px;
     font-family: Rajdhani, sans-serif;
     text-align: center;
@@ -197,19 +197,48 @@ body {
     overflow: hidden;
 }
 
-.sellItem, .addItem, .lockItem, .addDisplay, .openPack, .lockPack {
+.sellItem, .addItem, .lockItem, .addDisplay, .lockPack, .deletePack {
     width: 250px;
+}
+
+.openPack {
+    width: 560px;
+}
+
+.lockPack, .openPack {
+    transform: translateX(160px);
+}
+
+.lockPack:hover, .openPack:hover {
+    transform: translateX(160px) scale(1.05);
+}
+
+.lockPack:active, .openPack:active {
+    transform: translateX(160px) scale(1.00);
+}
+
+.deletePack {
+    position: relative;
+    transform: translate(-156px, -35px);
+}
+
+.deletePack:hover {
+    transform: translate(-156px, -35px) scale(1.05);
+}
+
+.deletePack:active {
+    transform: translate(-156px, -35px) scale(1.00);
 }
 
 .removeDisplay {
     width: 75%;
 }
 
-.clearGameState:hover, .saveGame:hover, .exportGameState:hover, .importGameState:hover, .sellItem:hover, .addItem:hover, .lockItem:hover, .addDisplay:hover, .openPack:hover, .lockPack:hover,.removeDisplay:hover {
+.clearGameState:hover, .saveGame:hover, .exportGameState:hover, .importGameState:hover, .sellItem:hover, .addItem:hover, .lockItem:hover, .addDisplay:hover,.removeDisplay:hover {
     transform: scale(1.05);
 }
 
-.clearGameState:active, .saveGame:active, .exportGameState:active, .importGameState:active, .sellItem:active, .addItem:active, .lockItem:active, .addDisplay:active, .openPack:active, .lockPack:active,.removeDisplay:active {
+.clearGameState:active, .saveGame:active, .exportGameState:active, .importGameState:active, .sellItem:active, .addItem:active, .lockItem:active, .addDisplay:active, .removeDisplay:active {
     transform: scale(1);
 }
 
@@ -219,6 +248,14 @@ body {
 
 .noselect:hover {
     transform: scale(1);
+}
+
+.lockPack.noselect:hover, .openPack.noselect:hover {
+    transform: translateX(160px) scale(1.00);
+}
+
+.deletePack.noselect:hover {
+    transform: translate(-156px, -35px) scale(1.00);
 }
 
 .tradeButton {
@@ -454,6 +491,10 @@ body {
 .jumbo {
     width: 149px;
     height: 207px;
+}
+
+.inventoryItem {
+    border-radius: 5px;
 }
 
 .inventoryItem.jumbo {
@@ -949,7 +990,6 @@ div.pack img {
     border: 2px #1f8509 solid;
     /*border-bottom: 2px #B0C3D9 solid;*/
     /*border-right: 2px #B0C3D9 solid;*/
-    border-radius: 5px;
 }
 
 .inventoryItem.promo .cardPrice {
@@ -960,7 +1000,6 @@ div.pack img {
     border: 2px #919191 solid;
     /*border-bottom: 2px #B0C3D9 solid;*/
     /*border-right: 2px #B0C3D9 solid;*/
-    border-radius: 5px;
 }
 
 .inventoryItem.energy .cardPrice {
@@ -971,7 +1010,6 @@ div.pack img {
     border: 2px #B0C3D9 solid;
     /*border-bottom: 2px #B0C3D9 solid;*/
     /*border-right: 2px #B0C3D9 solid;*/
-    border-radius: 5px;
 }
 
 .common .cardPrice {
@@ -982,7 +1020,6 @@ div.pack img {
     border: 2px #5E98D9 solid;
     /*border-bottom: 2px #5E98D9 solid;*/
     /*border-right: 2px #5E98D9 solid;*/
-    border-radius: 5px;
 }
 
 .inventoryItem.uncommon .cardPrice {
@@ -993,7 +1030,6 @@ div.pack img {
     border: 2px #4B69FF solid;
     /*border-bottom: 2px #4B69FF solid;*/
     /*border-right: 2px #4B69FF solid;*/
-    border-radius: 5px;
 }
 
 .inventoryItem.rare .cardPrice {
@@ -1004,7 +1040,6 @@ div.pack img {
     border: 2px #8847FF solid;
     /*border-bottom: 2px #8847FF solid;*/
     /*border-right: 2px #8847FF solid;*/
-    border-radius: 5px;
 }
 
 .inventoryItem.holoRare .cardPrice {
@@ -1015,7 +1050,6 @@ div.pack img {
     border: 2px #b927cb solid;
     /*border-bottom: 2px #D32CE6 solid;*/
     /*border-right: 2px #D32CE6 solid;*/
-    border-radius: 5px;
 }
 
 .inventoryItem.ultraRare .cardPrice {
@@ -1027,7 +1061,6 @@ div.pack img {
     border: 2px #C12222 solid;
     /*border-bottom: 2px #C12222 solid;*/
     /*border-right: 2px #C12222 solid;*/
-    border-radius: 5px;
 }
 
 .inventoryItem.reverseSecret .cardPrice {
@@ -1038,7 +1071,6 @@ div.pack img {
     border: 2px #FFD700 solid;
     /*border-bottom: 2px #FFD700 solid;*/
     /*border-right:  2px #FFD700 solid;*/
-    border-radius: 5px;
 }
 
 .inventoryItem.secretRare .cardPrice {
@@ -1173,10 +1205,10 @@ div.pack img {
     left: 0;
     margin-right: calc(100% / 3.037383);
     margin-left: calc(100% / 3.037383);
-    transform: translate(1.5%, 22%);
+    transform: translate(7.5%, 21%);
     overflow: hidden;
-    height: 390px;
-    width: 214px;
+    height: 350px;
+    width: 191px;
 }
 
 .modal .new, .modal .lockedOverlay {

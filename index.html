@@ -32,16 +32,16 @@
             <h2>SETTINGS</h2>
         </li>
         <li>
+            <input type="checkbox" id="newCardCheckbox">
+            <label for="newCardCheckbox">New Card Indicator</label>
+        </li>
+        <li>
             <input type="checkbox" id="popupCheckbox">
             <label for="popupCheckbox">Disable Popups</label>
         </li>
         <li>
             <input type="checkbox" id="clickCheckbox">
             <label for="clickCheckbox">Sell on Click</label>
-        </li>
-        <li>
-            <input type="checkbox" id="newCardCheckbox">
-            <label for="newCardCheckbox">New Card Indicator</label>
         </li>
     </div>
     <div class="settingsRight">
@@ -85,8 +85,13 @@
         <div class="modal-pack" id="modal-pack"></div>
     </div>
     <div class="modal-footer">
-        <div class="lockPack">Lock</div>
-        <div class="openPack" id="openPack"></div>
+        <div>
+            <div class="lockPack">Lock</div>
+            <div class="openPack" id="openPack"></div>
+        </div>
+        <div>
+            <div class="deletePack">Delete</div>
+        </div>
     </div>
 </div>
 <!-- display modal -->
@@ -231,6 +236,7 @@
                     <div class="optionContainer">
                         <div id="swshPromoOpt"></div>
                         <div id="futsalPromoOpt"></div>
+                        <div id="energyOpt"></div>
                         <div class="option" id="swsh1Opt" onclick="selectPack('swsh1')">
                             <div class="optionBackground" id="swsh1"></div>
                         </div>
@@ -340,10 +346,10 @@
                         </div>
                     </div>
                     <div class="optionContainer">
-                        <div class="option" onclick="">
+                        <div class="option" onclick="purchaseProduct('prod3')">
                             <div class="optionBackground shop">
                                 <div class="imageBorder product">
-                                    <img src="" alt="prod3">
+                                    <img src="img/products/prod3.webp" alt="prod3">
                                 </div>
                                 <div class="title" id="product3Nme"></div>
                                 <div class="desc" id="product3Dsc" style="padding-left: 20px"></div>
@@ -353,10 +359,10 @@
                         </div>
                     </div>
                     <div class="optionContainer">
-                        <div class="option" onclick="">
+                        <div class="option" onclick="purchaseProduct('prod4')">
                             <div class="optionBackground shop">
                                 <div class="imageBorder product">
-                                    <img src="" alt="prod4">
+                                    <img src="img/products/prod4.webp" alt="prod4">
                                 </div>
                                 <div class="title" id="product4Nme"></div>
                                 <div class="desc" id="product4Dsc" style="padding-left: 20px"></div>
@@ -366,15 +372,119 @@
                         </div>
                     </div>
                     <div class="optionContainer">
-                        <div class="option" onclick="">
+                        <div class="option" onclick="purchaseProduct('prod5')">
                             <div class="optionBackground shop">
                                 <div class="imageBorder product">
-                                    <img src="" alt="prod5">
+                                    <img src="img/products/prod5.webp" alt="prod5">
                                 </div>
                                 <div class="title" id="product5Nme"></div>
                                 <div class="desc" id="product5Dsc" style="padding-left: 20px"></div>
                                 <div class="price" id="product5Prc"></div>
                                 <div class="priceMob" id="product5PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="purchaseProduct('prod6')">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="img/products/prod6.webp" alt="prod6">
+                                </div>
+                                <div class="title" id="product6Nme"></div>
+                                <div class="desc" id="product6Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product6Prc"></div>
+                                <div class="priceMob" id="product6PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="purchaseProduct('prod7')">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="img/products/prod7.webp" alt="prod7">
+                                </div>
+                                <div class="title" id="product7Nme"></div>
+                                <div class="desc" id="product7Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product7Prc"></div>
+                                <div class="priceMob" id="product7PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="purchaseProduct('prod8')">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="img/products/prod8.webp" alt="prod8">
+                                </div>
+                                <div class="title" id="product8Nme"></div>
+                                <div class="desc" id="product8Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product8Prc"></div>
+                                <div class="priceMob" id="product8PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="purchaseProduct('prod9')">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="img/products/prod9.webp" alt="prod9">
+                                </div>
+                                <div class="title" id="product9Nme"></div>
+                                <div class="desc" id="product9Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product9Prc"></div>
+                                <div class="priceMob" id="product9PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="purchaseProduct('prod10')">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="img/products/prod10.webp" alt="prod10">
+                                </div>
+                                <div class="title" id="product10Nme"></div>
+                                <div class="desc" id="product10Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product10Prc"></div>
+                                <div class="priceMob" id="product10PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="purchaseProduct('prod11')">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="img/products/prod11.webp" alt="prod11">
+                                </div>
+                                <div class="title" id="product11Nme"></div>
+                                <div class="desc" id="product11Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product11Prc"></div>
+                                <div class="priceMob" id="product11PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="purchaseProduct('prod12')">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="img/products/prod12.webp" alt="prod12">
+                                </div>
+                                <div class="title" id="product12Nme"></div>
+                                <div class="desc" id="product12Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product12Prc"></div>
+                                <div class="priceMob" id="product12PrcMob"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="optionContainer">
+                        <div class="option" onclick="purchaseProduct('prod13')">
+                            <div class="optionBackground shop">
+                                <div class="imageBorder product">
+                                    <img src="img/products/prod13.webp" alt="prod13">
+                                </div>
+                                <div class="title" id="product13Nme"></div>
+                                <div class="desc" id="product13Dsc" style="padding-left: 20px"></div>
+                                <div class="price" id="product13Prc"></div>
+                                <div class="priceMob" id="product13PrcMob"></div>
                             </div>
                         </div>
                     </div>

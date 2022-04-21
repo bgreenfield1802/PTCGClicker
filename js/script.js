@@ -283,6 +283,23 @@ openPackButton.addEventListener('click', () => {
     }
 });
 
+// open pack button
+const deletePackButton = document.querySelector('.deletePack');
+deletePackButton.addEventListener('click', () => {
+    if (!selectedPack.locked) {
+        const div = document.getElementById(selectedPack.id);
+        div.parentNode.removeChild(div);
+        inv --;
+        value -= inventory[selectedPack.id].price;
+        delete inventory[selectedPack.id];
+        updateInv();
+        const modals = document.querySelectorAll('.modal.active')
+        modals.forEach(modal => {
+            closeModal(modal)
+        })
+    }
+});
+
 // add display item button
 const addDisplayButton = document.querySelector('.addDisplay');
 addDisplayButton.addEventListener('click', () => {
@@ -415,7 +432,7 @@ $(document).keyup(function(){
 
 // display pack shop
 for (let i in Object.keys(packs)){
-    if (i == 0 || i == 4) {
+    if (i == 0 || i == 1 || i == 5) {
     }else {
         updatePack(Object.keys(packs)[i]);
     }
@@ -496,7 +513,9 @@ function clickItem(itemId) {
     const div = document.getElementById(itemId);
     if (cntrlIsPressed) {
         if (clickSell) {
-            lockItem(itemId)
+            openModal('cardModal')
+            selectedCard = inventory[itemId]
+            updateSelectedCard()
         }else {
             sellItem(itemId);
         }
@@ -861,7 +880,7 @@ function openCard(rarity, cardNum, pack, reverse, isPack, jumbo) {
             img: packImg,
             locked: false,
             jumbo: jumbo,
-            new: false
+            newCard: false
         }
         drawItem("", "", itemId, "", isPack, pack)
     }
@@ -1091,6 +1110,19 @@ function randSel2(item1, item2) {
         eval(item1)
     }else {
         eval(item2)
+    }
+}
+
+function randSel4(item1, item2, item3, item4) {
+    const randNum = Math.random()
+    if (randNum >= 0.75) {
+        eval(item1)
+    } else if (randNum >= 0.5) {
+        eval(item2)
+    } else if (randNum >= 0.25) {
+        eval(item3)
+    } else {
+        eval(item4)
     }
 }
 
@@ -1384,7 +1416,9 @@ function updateCollectionItems(pack) {
 function updateCollectionMenu() {
     let keyArray = Object.keys(packs);
     for (let i in keyArray) {
-        document.getElementById(keyArray[i]+"Amt").innerHTML = "Collected: "+collection[keyArray[i]].collectedTotal+"/"+packs[keyArray[i]].cards;
+        if (keyArray[i] != "energy") {
+            document.getElementById(keyArray[i]+"Amt").innerHTML = "Collected: "+collection[keyArray[i]].collectedTotal+"/"+packs[keyArray[i]].cards;
+        }
     }
 }
 
@@ -1461,9 +1495,11 @@ function updateSelectedPack() {
     if (selectedPack.locked) {
         document.querySelector('.lockPack').innerHTML = 'Unlock'
         document.querySelector('.openPack').classList.add('noselect')
+        document.querySelector('.deletePack').classList.add('noselect')
     }else {
         document.querySelector('.lockPack').innerHTML = 'Lock'
         document.querySelector('.openPack').classList.remove('noselect')
+        document.querySelector('.deletePack').classList.remove('noselect')
     }
 
     inv += cardSum;
