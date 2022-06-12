@@ -60,7 +60,7 @@ const packs = {
         contents: [0,5,3,1,1], // energy, commons, uncommons, reverse, rare
         desc: "Contains 10 cards", imgNum: 4,
         price: 5, cards: 72, secret: 1, subset: 122, total: 73,
-        img: "img/swsh6/swsh_shining_fates", cardImg: ""
+        img: "img/swsh6/swsh_shining_fates", cardImg: "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH45/SWSH45_EN_"
     },
     swsh7: {
         name: "Sword & Shield Battle Styles", name2: "Battle Styles",

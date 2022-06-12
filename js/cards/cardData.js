@@ -111,6 +111,78 @@ const cards = {
                 infoLink: "https://www.tcgplayer.com/product/208266/pokemon-swsh-sword-and-shield-promo-cards-cinccino-swsh009-prerelease-promo",
                 get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
             },
+            card10: {
+                get name() {return "Gossifleur"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 0.57, num: 10, rarity: 0, type: "grass", holo: 3,
+                infoLink: "https://www.tcgplayer.com/product/206429/pokemon-swsh-sword-and-shield-promo-cards-gossifleur-swsh010",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card11: {
+                get name() {return "Wooloo"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 0.72, num: 11, rarity: 0, type: "colorless", holo: 3,
+                infoLink: "https://www.tcgplayer.com/product/206427/pokemon-swsh-sword-and-shield-promo-cards-wooloo-swsh011",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card12: {
+                get name() {return "Morpeko"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 1.19, num: 12, rarity: 0, type: "electric", holo: 3,
+                infoLink: "https://www.tcgplayer.com/product/206428/pokemon-swsh-sword-and-shield-promo-cards-morpeko-swsh012",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card13: {
+                get name() {return "Galarian Ponyta"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 3.50, num: 13, rarity: 0, type: "psychic", holo: 3,
+                infoLink: "https://www.tcgplayer.com/product/206430/pokemon-swsh-sword-and-shield-promo-cards-galarian-ponyta-swsh013",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card14: {
+                get name() {return "Rillaboom V"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 1.26, num: 14, rarity: 0, type: "grass", holo: 1,
+                infoLink: "https://www.tcgplayer.com/product/206421/pokemon-swsh-sword-and-shield-promo-cards-rillaboom-v-swsh014",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card15: {
+                get name() {return "Cinderace V"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 1.33, num: 15, rarity: 0, type: "fire", holo: 1,
+                infoLink: "https://www.tcgplayer.com/product/206419/pokemon-swsh-sword-and-shield-promo-cards-cinderace-v-swsh015",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card16: {
+                get name() {return "Inteleon V"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 1.09, num: 16, rarity: 0, type: "water", holo: 1,
+                infoLink: "https://www.tcgplayer.com/product/206418/pokemon-swsh-sword-and-shield-promo-cards-inteleon-v-swsh016",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card17: {
+                get name() {return "Toxtricity V"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 1.33, num: 17, rarity: 0, type: "electric", holo: 1,
+                infoLink: "https://www.tcgplayer.com/product/206425/pokemon-swsh-sword-and-shield-promo-cards-toxtricity-v-swsh017",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card18: {
+                get name() {return "Zacian V"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 2.38, num: 18, rarity: 0, type: "metal", holo: 1,
+                infoLink: "https://www.tcgplayer.com/product/214233/pokemon-swsh-sword-and-shield-promo-cards-zacian-v-swsh018",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card19: {
+                get name() {return "Zamazenta V"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 1.31, num: 19, rarity: 0, type: "metal", holo: 1,
+                infoLink: "https://www.tcgplayer.com/product/214234/pokemon-swsh-sword-and-shield-promo-cards-zamazenta-v-swsh019",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card20: {
+                get name() {return "Pikachu"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 4.02, num: 20, rarity: 0, type: "electric", holo: 1,
+                infoLink: "https://www.tcgplayer.com/product/214241/pokemon-swsh-sword-and-shield-promo-cards-pikachu-swsh020",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
+            card21: {
+                get name() {return "Polteageist V"+holoCheck(this.holo)+" | "+packs.swshPromo.name2+" "+zeroFill(this.num)+"/"+packs.swshPromo.total},
+                price: 1.77, num: 21, rarity: 0, type: "psychic", holo: 1,
+                infoLink: "https://www.tcgplayer.com/product/214235/pokemon-swsh-sword-and-shield-promo-cards-polteageist-v-swsh021",
+                get img() {return "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSHP/SWSHP_EN_SWSH"+zeroFill(this.num)+".png"}
+            },
         }
     }
 }
